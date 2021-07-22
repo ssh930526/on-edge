@@ -20,3 +20,11 @@ footer {
 .page-footer {
     background-color: blueviolet;
 }
+
+.heading{
+    font-weight: bold;
+}
+
+.card-title {
+    color: blueviolet;
+}
