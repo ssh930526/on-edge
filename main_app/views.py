@@ -18,4 +18,4 @@ class AssignmenDetail(DetailView ):
 
 class AssignmentCreate(CreateView):
     model = Assignment
-    fields = '__all__'
+    fields = ['description', 'due_date']

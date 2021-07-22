@@ -2,5 +2,13 @@
 
 {% block content %}
 
+<h1>Add New Assignment</h1>
 
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value='Create Assignment' class="btn">
+</form>
 {% endblock %}
