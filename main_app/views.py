@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Assignment
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 
 # Create your views here.
@@ -14,3 +15,7 @@ class AssignmentList(ListView):
 
 class AssignmenDetail(DetailView ):
     model = Assignment
+
+class AssignmentCreate(CreateView):
+    model = Assignment
+    fields = '__all__'

@@ -7,4 +7,6 @@ urlpatterns = [
 
     # Routes for Assignments
     path('assignments/', views.AssignmentList.as_view(), name='assignments_index'),
+    path('assignments/<int:pk>/', views.AssignmenDetail.as_view(), name='assignments_detail'),
+    path('assignments/create/', views.AssignmentCreate.as_view(), name='assignments_create'),
 ]
