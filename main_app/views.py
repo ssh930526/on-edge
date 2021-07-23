@@ -19,3 +19,11 @@ class AssignmenDetail(DetailView ):
 class AssignmentCreate(CreateView):
     model = Assignment
     fields = ['description', 'due_date']
+
+class AssignmentUpdate(UpdateView):
+    model = Assignment
+    fields = ['description', 'due_date']
+
+class AssignmentDelete(DeleteView):
+    model = Assignment
+    success_url = '/assignments/'

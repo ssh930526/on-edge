@@ -9,8 +9,8 @@
       <p><span class="heading">Due Date:</span> {{ assignment.due_date }}</p>
     </div>
     <div class="card-action">
-        <a href="">Edit</a>
-        <a href="">Delete</a>
+        <a href="{% url 'assignments_update' assignment.id %}">Edit</a>
+        <a href="{% url 'assignments_delete' assignment.id %}">Delete</a>
     </div>
-  </div>
+</div>
 {% endblock %}

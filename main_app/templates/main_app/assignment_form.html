@@ -2,14 +2,22 @@
 
 {% block content %}
 
+{% if object %}
+<h1>Edit Assignment {{ object.id }}</h1>
+{% else %}
 <h1>Add New Assignment</h1>
+{% endif %}
 
 <form action="" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
+    {% if object %}
+    <input type="submit" value='Confirm Edits' class="btn">
+    {% else %}
     <input type="submit" value='Create Assignment' class="btn">
+    {% endif %}
 </form>
 
 <script>
@@ -20,6 +28,5 @@
         setDefaultDate: true,
         autoClose: true
     })
-
 </script>
 {% endblock %}
