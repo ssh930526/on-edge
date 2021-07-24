@@ -48,6 +48,8 @@ class ClassroomCreate(CreateView):
 class ClassroomUpdate(UpdateView):
     model = Classroom
     fields = '__all__'
+    success_url = '/classrooms/'
+
 
 class ClassroomDelete(DeleteView):
     model = Classroom
