@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Delete Assignment {{ object.id }}</h1>
+
+<h4>Are you sure you want to delete Assignment {{ object.id }}?</h4>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="btn">
+    <a href="{% url 'assignments_detail' object.id %}">
+        <input type="submit" value="Cancel" class="btn">
+    </a>
+
+</form>
+
+{% endblock %}

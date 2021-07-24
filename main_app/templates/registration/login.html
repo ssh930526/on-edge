@@ -4,7 +4,7 @@
 {% block content %}
 
 
-
+   
 <h1>Login</h1>
 
 <form action="{% url 'login' %}"  method="POST">
@@ -12,7 +12,7 @@
     {{ form.as_p }}
     <input type="submit" value="Login" class="btn grey lighten-1 right">
     
-    <input type="hidden" name="next" value="{{ next }}">
+    <input type="hidden" name="next" value="{{ next }}">   
 
 </form>
 
