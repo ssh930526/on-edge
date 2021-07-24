@@ -13,19 +13,19 @@ footer {
     text-align: right;
 }
 
-.nav-wrapper {
+/* .nav-wrapper {
     background-color: blueviolet;
 }
 
 .page-footer {
     background-color: blueviolet;
-}
+} */
 
 .heading{
     font-weight: bold;
 }
 
 .card-title {
-    color: blueviolet;
+    /* color: blueviolet; */
     text-align: center;
 }
