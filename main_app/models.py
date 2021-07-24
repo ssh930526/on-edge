@@ -27,6 +27,14 @@ class Assignment(models.Model):
         return reverse('assignments_detail', kwargs={'pk': self.id})
 
 class Classroom(models.Model):
-    students = models.ManyToManyField(Student)
-    teacher = models.ForeignKey(User, on_delete=CASCADE)
+    course_subject = models.CharField(max_length=100)
+    course_number = models.IntegerField()
+    course_name = models.CharField(max_length=100)
+    # students = models.ManyToManyField(Student)
+    # teacher = models.ForeignKey(User, on_delete=CASCADE)
+    
+    def __str__(self):
+        return f'{self.course_subject} {self.course_number}, {self.course_name}'
 
+    def get_absolute_url(self):
+        return reverse('classroom_detail', kwargs={'pk': self.id})
