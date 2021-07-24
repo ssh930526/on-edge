@@ -8,13 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
     <!-- Compiled and minified Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <title>Document</title>
+    <title>OnEdge</title>
 </head>
 <header class="navbar-fixed">
     <nav>
+<<<<<<< HEAD
         <div class="nav-wrapper">
             <ul>
                 <li>
@@ -43,8 +47,40 @@
                     <a href="">Signup</a>
                 </li>
 
+=======
+        <nav class="grey darken-3">
+            <div class="nav-wrapper">
+                <ul>
+                    <li>
+                        <span class="material-icons dp48">school</span>
+                        <a href="{% url 'home' %}" class="left brand-logo">OnEdge</a>
+                    </li>
+                </ul>
+                <ul class="right">
+                    <li>
+                        <a href="{% url 'about' %}">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="">Classrooms</a>
+                    </li>
+                    <li>
+                        <a href="">Students</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}">Signup</a>
+                    </li>
+>>>>>>> ssh930526-master-development
 
-            </ul>
+                </ul>
+            </nav>
         </div>
     </nav>
 </header>
@@ -54,9 +90,16 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="page-footer">
-        <div class="right">All Rights Reserved &copy; 2021 OnEdge</div>
-    </footer>
+    <br>
+    <br>
+        <footer class="page-footer" id="myFooter">
+            <style>
+                 #myFooter {background-color:#424242;}
+            </style>
+                <div class="center">All Rights Reserved &copy; 2021 OnEdge 
+                    
+                </div>
+        </footer> 
 </body>
 
 </html>

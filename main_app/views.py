@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Assignment, Classroom
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def home(req):
@@ -9,7 +13,6 @@ def home(req):
 
 def about(req):
     return render(req, 'about.html')
-
 
 class AssignmentList(ListView):
     model = Assignment
@@ -50,3 +53,20 @@ class ClassroomDelete(DeleteView):
     model = Classroom
     success_url = '/classrooms/'
 
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid Signup Data - Please Try Again'
+
+
+    #create user
+    form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
+  
+    
