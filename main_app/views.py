@@ -34,11 +34,13 @@ class AssignmentUpdate(LoginRequiredMixin, UpdateView):
 class AssignmentDelete(LoginRequiredMixin,DeleteView):
     model = Assignment
     success_url = '/assignments/'
-    
+
+@login_required  
 def classrooms_index(req):
     classrooms = Classroom.objects.all()
     return render(req, 'classrooms/index.html', {'classrooms': classrooms})
 
+@login_required
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
     return render(req, 'classrooms/detail.html', {'classroom': classroom})
