@@ -51,6 +51,8 @@ class ClassroomCreate(LoginRequiredMixin, CreateView):
 class ClassroomUpdate(LoginRequiredMixin, UpdateView):
     model = Classroom
     fields = '__all__'
+    success_url = '/classrooms/'
+
 
 class ClassroomDelete(LoginRequiredMixin, DeleteView):
     model = Classroom
