@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .models import Assignment
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def home(req):
@@ -6,3 +9,21 @@ def home(req):
 
 def about(req):
     return render(req, 'about.html')
+
+class AssignmentList(ListView):
+    model = Assignment
+
+class AssignmenDetail(DetailView ):
+    model = Assignment
+
+class AssignmentCreate(CreateView):
+    model = Assignment
+    fields = ['description', 'due_date']
+
+class AssignmentUpdate(UpdateView):
+    model = Assignment
+    fields = ['description', 'due_date']
+
+class AssignmentDelete(DeleteView):
+    model = Assignment
+    success_url = '/assignments/'
