@@ -11,6 +11,7 @@ def home(req):
 def about(req):
     return render(req, 'about.html')
 
+ 
 
 def signup(request):
     error_message = ''
@@ -23,7 +24,9 @@ def signup(request):
         else:
             error_message = 'Invalid Signup Data - Please Try Again'
 
+
     #create user
     form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
+  
   
