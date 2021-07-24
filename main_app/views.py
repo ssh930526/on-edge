@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Classroom
+from .models import Assignment, Classroom
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 
@@ -10,6 +10,25 @@ def home(req):
 def about(req):
     return render(req, 'about.html')
 
+
+class AssignmentList(ListView):
+    model = Assignment
+
+class AssignmenDetail(DetailView ):
+    model = Assignment
+
+class AssignmentCreate(CreateView):
+    model = Assignment
+    fields = ['description', 'due_date']
+
+class AssignmentUpdate(UpdateView):
+    model = Assignment
+    fields = ['description', 'due_date']
+
+class AssignmentDelete(DeleteView):
+    model = Assignment
+    success_url = '/assignments/'
+    
 def classrooms_index(req):
     classrooms = Classroom.objects.all()
     return render(req, 'classrooms/index.html', {'classrooms': classrooms})
@@ -30,3 +49,4 @@ class ClassroomUpdate(UpdateView):
 class ClassroomDelete(DeleteView):
     model = Classroom
     success_url = '/classrooms/'
+

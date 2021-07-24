@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Current Assignments</h1>
+
+{% for assignment in assignment_list %}
+<a href="{% url 'assignments_detail' assignment.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">Assignment number {{ assignment.id }}</span>
+            <p><span class="heading">Description:</span> {{ assignment.description }}</p>
+            <p><span class="heading">Due Date:</span> {{ assignment.due_date }}</p>
+        </div>
+    </div>
+</a>
+
+{% endfor %}
+
+{% endblock %}

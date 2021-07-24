@@ -17,12 +17,14 @@ class Student(models.Model):
 class Assignment(models.Model):
     description = models.TextField(max_length=1000)
     due_date = models.DateField()
-    completeted_date = models.DateField() 
-    teacher = models.ForeignKey(User, on_delete=CASCADE)
+    # completed_date = models.DateField(null=True) 
+    # teacher = models.ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
         return self.first_name
 
+    def get_absolute_url(self):
+        return reverse('assignments_detail', kwargs={'pk': self.id})
 
 class Classroom(models.Model):
     course_subject = models.CharField(max_length=100)
