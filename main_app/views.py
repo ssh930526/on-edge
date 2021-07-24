@@ -25,6 +25,8 @@ class ClassroomCreate(CreateView):
 
 class ClassroomUpdate(UpdateView):
     model = Classroom
+    fields = '__all__'
 
 class ClassroomDelete(DeleteView):
     model = Classroom
+    success_url = '/classrooms/'

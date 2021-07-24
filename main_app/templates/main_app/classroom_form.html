@@ -2,14 +2,18 @@
 
 {% block content %}
 
-<h1>Add A New Classroom</h1>
+{% if object %}
+    <h1>Edit <span class="teal-text">{{ object.course_subject }}{{ object.course_number }}</span></h1>
+{% else %}
+    <h1>Add A New Classroom</h1>
+{% endif %}
 
 <form action="" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-    <input class="btn" type="Submit" value="Create Classroom">
+    <input class="btn" type="Submit" value="Submit">
 </form>
 
 {% endblock %}
