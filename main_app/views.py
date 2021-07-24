@@ -14,21 +14,24 @@ def home(req):
 def about(req):
     return render(req, 'about.html')
 
-class AssignmentList(ListView):
+class AssignmentList(LoginRequiredMixin, ListView):
     model = Assignment
 
-class AssignmenDetail(DetailView ):
+class AssignmenDetail(LoginRequiredMixin, DetailView ):
     model = Assignment
 
-class AssignmentCreate(CreateView):
-    model = Assignment
-    fields = ['description', 'due_date']
-
-class AssignmentUpdate(UpdateView):
+class AssignmentCreate(LoginRequiredMixin, CreateView):
     model = Assignment
     fields = ['description', 'due_date']
 
-class AssignmentDelete(DeleteView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+class AssignmentUpdate(LoginRequiredMixin, UpdateView):
+    model = Assignment
+    fields = ['description', 'due_date']
+
+class AssignmentDelete(LoginRequiredMixin,DeleteView):
     model = Assignment
     success_url = '/assignments/'
     
@@ -40,18 +43,18 @@ def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
     return render(req, 'classrooms/detail.html', {'classroom': classroom})
     
-class ClassroomCreate(CreateView):
+class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom
     fields = '__all__'
     success_url = '/classrooms/'
 
-class ClassroomUpdate(UpdateView):
+class ClassroomUpdate(LoginRequiredMixin, UpdateView):
     model = Classroom
     fields = '__all__'
     success_url = '/classrooms/'
 
 
-class ClassroomDelete(DeleteView):
+class ClassroomDelete(LoginRequiredMixin, DeleteView):
     model = Classroom
     success_url = '/classrooms/'
 
@@ -62,7 +65,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('classrooms_index')
         else:
             error_message = 'Invalid Signup Data - Please Try Again'
 
