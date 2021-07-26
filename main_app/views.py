@@ -87,3 +87,11 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
   
     
+def dashboard_index(req):
+    assignments = Assignment.objects.filter(user=req.user)
+    classrooms = Classroom.objects.filter(user=req.user)
+    return render(req, 'dashboard.html', {
+        'assignments': assignments,
+        'classrooms': classrooms,
+        'user': req.user
+    })
