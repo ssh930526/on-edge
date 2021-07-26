@@ -38,7 +38,7 @@ class AssignmentDelete(LoginRequiredMixin,DeleteView):
 
 @login_required  
 def classrooms_index(req):
-    classrooms = Classroom.objects.all()
+    classrooms = Classroom.objects.filter(user=req.user)
     return render(req, 'classrooms/index.html', {'classrooms': classrooms})
 
 @login_required  
