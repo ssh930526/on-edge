@@ -18,7 +18,7 @@ class Assignment(models.Model):
     description = models.TextField(max_length=1000)
     due_date = models.DateField()
     # completed_date = models.DateField(null=True) 
-    # teacher = models.ForeignKey(User, on_delete=CASCADE)
+    teacher = models.ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
         return self.first_name
