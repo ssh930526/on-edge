@@ -3,23 +3,8 @@
 {% block content %}
 
 <div class="row">
-    <!-- <div class="col s12">
-        <div class="card">
-            <div class="card-content teacherDash">
-                <div>
-                    <img src="https://i.imgur.com/QPhMDNr.png" alt="" class="teacherImg">
-                    <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-                </div>
-                <div id="teacherInfo">
-                    <span class>Email Address: </span><p>{{ user.email }}</p>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo veniam qui consequatur perspiciatis exercitationem aliquid incidunt quasi excepturi labore repudiandae obcaecati, quis asperiores repellat voluptas inventore fuga itaque reiciendis! A.</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="col s12">
-        <h2 class="header">{{ user.first_name }}'s Dashboard</h2>
+        <h2 class="dashHeader">{{ user.first_name }}'s Dashboard</h2>
         <div class="card horizontal">
             <div class="card-image">
                 <img src="https://i.imgur.com/QPhMDNr.png">
@@ -27,16 +12,50 @@
             <div class="card-stacked">
                 <div class="card-content">
                     <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-                    <span class="label">Email Addres: </span>
+                    <span class="label">Email Address: </span>
                     <p>{{ user.email }}</p>
                     <br>
                     <span class="label">About: </span>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure, eveniet asperiores adipisci veritatis eligendi accusantium vero ducimus omnis neque natus, nostrum atque magni rem amet maiores quae. Voluptas, ea similique!</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
+                    <br>
+                    <span class="label">Total Classrooms: </span>
+                    <p>{{ classrooms.count }}</p>
+                    <br>
+                    <span class="label">Total Assignments: </span>
+                    <p>{{ assignments.count }}</p>
+                    <br>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ user.first_name }}'s Assignments</span>
+                {% for assignment in assignments %}
+                    <p class="assignmentDesc">{{ assignment.description }}</p>
+                    <p><span class="label">Due Date: </span> {{ assignment.due_date }}</p>
+                    <br>
+                {%  endfor %}
+            </div>
+            <div class="card-action">
+                <a href="{% url 'assignments_index' %}">View All Assignments</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ user.first_name }}'s Classrooms</span>
+                {% for classroom in classrooms %}
+                    <p><span class="label">{{ classroom.course_subject }} {{ classroom.course_number }}: </span> {{ classroom.course_name }}</p>
+                {%  endfor %}
+            </div>
+            <div class="card-action">
+                <a href="{% url 'classrooms_index' %}">View All Classrooms</a>
+            </div>
+
         </div>
     </div>
 </div>
