@@ -49,7 +49,8 @@
             <div class="card-content">
                 <span class="card-title">{{ user.first_name }}'s Classrooms</span>
                 {% for classroom in classrooms %}
-                    <p><span class="label">{{ classroom.course_subject }} {{ classroom.course_number }}: </span> {{ classroom.course_name }}</p>
+                    <p class="assignmentDesc"><span class="label">{{ classroom.course_subject }} {{ classroom.course_number }}: </span> {{ classroom.course_name }}</p>
+                    <br>
                 {%  endfor %}
             </div>
             <div class="card-action">

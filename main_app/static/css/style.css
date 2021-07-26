@@ -24,15 +24,16 @@ footer {
 }
 
 .dashHeader, .card-title {
-    background-color: black;
-    color: white;
+    /* background-color: black; */
+    /* color: white; */
     margin-bottom: 0;
-    padding: 10px;
+    border-bottom: 5px solid black;
+    /* padding: 10px; */
 }
 
 .label {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .horizontal{
@@ -40,5 +41,5 @@ footer {
 }
 
 .assignmentDesc {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
 }
