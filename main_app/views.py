@@ -14,15 +14,20 @@ def home(req):
 def about(req):
     return render(req, 'about.html')
 
-class AssignmentList(LoginRequiredMixin, ListView):
-    model = Assignment
+@login_required  
+def assignments_index(req):
+    assignments = Assignment.objects.filter(user=req.user)
+    return render(req, 'assignments/index.html', {'assignments': assignments})
 
-class AssignmenDetail(LoginRequiredMixin, DetailView ):
-    model = Assignment
-
+@login_required  
+def assignments_detail(req, assignment_id):
+    assignment = Assignment.objects.get(id=assignment_id)
+    return render(req, 'assignments/detail.html', {'assignment': assignment})
+    
 class AssignmentCreate(LoginRequiredMixin, CreateView):
     model = Assignment
     fields = ['description', 'due_date']
+    success_url = '/assignments/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -31,6 +36,7 @@ class AssignmentCreate(LoginRequiredMixin, CreateView):
 class AssignmentUpdate(LoginRequiredMixin, UpdateView):
     model = Assignment
     fields = ['description', 'due_date']
+    success_url = '/assignments/'
 
 class AssignmentDelete(LoginRequiredMixin,DeleteView):
     model = Assignment
