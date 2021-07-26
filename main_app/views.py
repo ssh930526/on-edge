@@ -27,6 +27,7 @@ class AssignmentCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+        
 class AssignmentUpdate(LoginRequiredMixin, UpdateView):
     model = Assignment
     fields = ['description', 'due_date']
@@ -40,21 +41,24 @@ def classrooms_index(req):
     classrooms = Classroom.objects.all()
     return render(req, 'classrooms/index.html', {'classrooms': classrooms})
 
-@login_required
+@login_required  
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
     return render(req, 'classrooms/detail.html', {'classroom': classroom})
     
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom
-    fields = '__all__'
+    fields = ['course_subject', 'course_number', 'course_name']
     success_url = '/classrooms/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class ClassroomUpdate(LoginRequiredMixin, UpdateView):
     model = Classroom
     fields = '__all__'
     success_url = '/classrooms/'
-
 
 class ClassroomDelete(LoginRequiredMixin, DeleteView):
     model = Classroom
