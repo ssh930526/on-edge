@@ -43,3 +43,11 @@ footer {
 .assignmentDesc {
     font-size: 1.2rem;
 }
+
+.addedAssignment{
+    background-color: rgba(255, 255, 0, 0.575);
+}
+
+.unassigned {
+    background-color: aqua
+}

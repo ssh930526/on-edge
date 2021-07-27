@@ -13,7 +13,7 @@
                     <h5>Classroom Assignments</h5>
                     {% if classroom.assignments.count %}
                         {% for assignment in classroom.assignments.all %}
-                            <div class="card">
+                            <div class="card addedAssignment">
                                 <div class="card-content">
                                     <span class="card-title">
                                         {{ assignment.description }}
@@ -40,7 +40,7 @@
                     <h5>Available Assignments</h5>
                     {% if unassigned.count %}
                         {% for assignment in unassigned.all %}
-                            <div class="card">
+                            <div class="card unassigned">
                                 <div class="card-content">
                                     <span class="card-title">
                                         {{ assignment.description }}
