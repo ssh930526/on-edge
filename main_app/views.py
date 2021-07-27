@@ -50,7 +50,11 @@ def classrooms_index(req):
 @login_required  
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
-    return render(req, 'classrooms/detail.html', {'classroom': classroom})
+    assignments = Assignment.objects.filter(user=req.user)
+    return render(req, 'classrooms/detail.html', {
+        'classroom': classroom,
+        'assignments': assignments
+    })
     
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom

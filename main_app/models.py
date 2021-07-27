@@ -32,6 +32,7 @@ class Classroom(models.Model):
     course_name = models.CharField(max_length=100)
     # students = models.ManyToManyField(Student)
     user = models.ForeignKey(User, on_delete=CASCADE)
+    assignments = models.ManyToManyField(Assignment)
     
     def __str__(self):
         return f'{self.course_subject} {self.course_number}, {self.course_name}'

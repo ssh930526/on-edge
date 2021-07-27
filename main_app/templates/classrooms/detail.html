@@ -10,7 +10,13 @@
     <div class="card-action">
         <a href="{% url 'classrooms_update' classroom.id %}">Edit</a>
         <a href="{% url 'classrooms_delete' classroom.id %}">Delete</a>
-    </div>
+    </div> 
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
 
 {% endblock%}
