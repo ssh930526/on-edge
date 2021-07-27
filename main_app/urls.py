@@ -20,6 +20,8 @@ urlpatterns = [
     # Routes for User Auth
     path('accounts/signup/', views.signup, name='signup'), 
     # Routes for Dashboard
-    path('dashboard/', views.dashboard_index, name='user_dashboard')
+    path('dashboard/', views.dashboard_index, name='user_dashboard'),
+    # Associate assignments to classroom 
+    path('classrooms/<int:classroom_id>/assoc_assignment/<int:assignment_id>/', views.assoc_assignment_to_classroom, name='assoc_assignment'),
     
 ]

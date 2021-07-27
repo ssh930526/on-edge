@@ -51,11 +51,19 @@ def classrooms_index(req):
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
     assignments = Assignment.objects.filter(user=req.user)
+    unassigned_assignments = assignments.exclude(id__in = classroom.assignments.all().values_list('id'))
     return render(req, 'classrooms/detail.html', {
         'classroom': classroom,
-        'assignments': assignments
+        'allAssignments': assignments,
+        'unassigned': unassigned_assignments
     })
-    
+
+@login_required
+def assoc_assignment_to_classroom(req, classroom_id, assignment_id):
+    Classroom.objects.get(id=classroom_id).assignments.add(assignment_id)
+    return redirect('detail', classroom_id=classroom_id)
+
+
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom
     fields = ['course_subject', 'course_number', 'course_name']
@@ -67,7 +75,7 @@ class ClassroomCreate(LoginRequiredMixin, CreateView):
 
 class ClassroomUpdate(LoginRequiredMixin, UpdateView):
     model = Classroom
-    fields = '__all__'
+    fields = ['course_subject', 'course_number', 'course_name']
     success_url = '/classrooms/'
 
 class ClassroomDelete(LoginRequiredMixin, DeleteView):
