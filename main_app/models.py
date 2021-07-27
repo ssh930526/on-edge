@@ -37,5 +37,5 @@ class Classroom(models.Model):
     def __str__(self):
         return f'{self.course_subject} {self.course_number}, {self.course_name}'
 
-    # def get_absolute_url(self):
-    #     return reverse('classrooms_detail', kwargs={'pk': self.id})
+    def get_absolute_url(self):
+        return reverse('classrooms_detail', kwargs={'pk': self.id})
