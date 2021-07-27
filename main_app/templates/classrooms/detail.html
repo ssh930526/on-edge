@@ -5,11 +5,25 @@
 <div class="card">
     <div class="card-content">
         <span class="card-title">{{ classroom.course_subject }} {{ classroom.course_number }}</span>
-        <p>Class Name: {{ classroom.course_name }}</p>
+        <p>{{ classroom.course_name }}</p>
+        <br>
+        <h5>Current Assignments</h5>
+        <div id="currentAssignments"></div>
+        <form action="#" method="POST">
+            {% for assignment in assignments %}
+            <p>
+                <label>
+                  <input type="checkbox" />
+                  <span>{{ assignment.description }} | Due {{ assignment.due_date }}</span>
+                </label>
+              </p>
+            {% endfor %}
+            <button type="submit" class="btn">Add Assignments</button>
+        </form>
     </div>
     <div class="card-action">
-        <a href="{% url 'classrooms_update' classroom.id %}">Edit</a>
-        <a href="{% url 'classrooms_delete' classroom.id %}">Delete</a>
+        <a href="{% url 'classrooms_update' classroom.id %}">Edit Classroom</a>
+        <a href="{% url 'classrooms_delete' classroom.id %}">Delete Classroom</a>
     </div> 
 </div>
 
