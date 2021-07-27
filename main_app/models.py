@@ -8,7 +8,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     age = models.IntegerField()
-    teacher = models.ForeignKey(User, on_delete=CASCADE)
+    # teacher = models.ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
         return self.first_name
@@ -30,7 +30,7 @@ class Classroom(models.Model):
     course_subject = models.CharField(max_length=100)
     course_number = models.IntegerField()
     course_name = models.CharField(max_length=100)
-    # students = models.ManyToManyField(Student)
+    # stuquitdents = models.ManyToManyField(Student)
     # teacher = models.ForeignKey(User, on_delete=CASCADE)
     
     def __str__(self):

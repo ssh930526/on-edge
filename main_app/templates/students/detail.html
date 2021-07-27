@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Student Details</h1>
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ student.first_name }} {{ student.last_name }}</span>
+        <p>Age: {{ student.age }}</p>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'students_update' student.id %}">Edit</a>
+        <a href="{% url 'students_delete' student.id %}">Delete</a>
+    </div>
+</div>
+
+{% endblock%}

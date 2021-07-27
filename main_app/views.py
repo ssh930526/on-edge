@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Assignment, Classroom
+from .models import Assignment, Classroom, Student
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
@@ -76,4 +76,27 @@ def signup(request):
     form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
   
-    
+@login_required  
+def students_index(req):
+    students = Student.objects.all()
+    return render(req, 'students/index.html', {'students': students})
+
+@login_required
+def students_detail(req, classroom_id):
+    classroom = Classroom.objects.get(id=classroom_id)
+    return render(req, 'classrooms/detail.html', {'classroom': classroom})
+
+class StudentsCreate(LoginRequiredMixin, CreateView):
+    model = Student
+    fields = '__all__'
+    success_url = '/students/'
+
+class StudentsUpdate(LoginRequiredMixin, UpdateView):
+    model = Student
+    fields = '__all__'
+    success_url = '/students/'
+
+
+class StudentsDelete(LoginRequiredMixin, DeleteView):
+    model = Student
+    success_url = '/students/'
