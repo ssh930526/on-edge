@@ -18,34 +18,47 @@
                                     <span class="card-title">
                                         {{ assignment.description }}
                                     </span>
-                                    <p>{{ assignment.due_date }}</p>
+                                    <p>
+                                        {{ assignment.due_date }}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <form action="{% url 'unassoc_assignment' classroom.id assignment.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn" type="submit">Remove from Class</button>
+                                    </form>
                                 </div>
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p>No Assignments</p>
+                        <p>No Assignments added to Class</p>
                     {% endif %}
                 </div>
             </div>
             <div class="col s6">
                 <div id="availAssignments">
                     <h5>Available Assignments</h5>
-                    {% for assignment in unassigned.all %}
-                        <div class="card">
-                            <div class="card-content">
-                                <span class="card-title">
-                                    {{ assignment.description }}
-                                </span>
-                                <p>{{ assignment.due_date }}</p>
+                    {% if unassigned.count %}
+                        {% for assignment in unassigned.all %}
+                            <div class="card">
+                                <div class="card-content">
+                                    <span class="card-title">
+                                        {{ assignment.description }}
+                                    </span>
+                                    <p>{{ assignment.due_date }}</p>
+                                </div>
+                                <div class="card-action">
+                                    <form action="{% url 'assoc_assignment' classroom.id assignment.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn" type="submit">Add to Class</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="card-action">
-                                <form action="{% url 'assoc_assignment' classroom.id assignment.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button class="btn" type="submit">Add to Class</button>
-                                </form>
-                            </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        <p>No more assignments</p>
+
+                    {% endif %}
                 </div>
             </div>
         </div>

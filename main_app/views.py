@@ -63,6 +63,11 @@ def assoc_assignment_to_classroom(req, classroom_id, assignment_id):
     Classroom.objects.get(id=classroom_id).assignments.add(assignment_id)
     return redirect('classrooms_detail', classroom_id=classroom_id)
 
+@login_required
+def unassoc_assignment_to_classroom(req, classroom_id, assignment_id):
+    Classroom.objects.get(id=classroom_id).assignments.remove(assignment_id)
+    return redirect('classrooms_detail', classroom_id=classroom_id)
+
 
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom

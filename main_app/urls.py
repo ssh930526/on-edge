@@ -23,5 +23,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard_index, name='user_dashboard'),
     # Associate assignments to classroom 
     path('classrooms/<int:classroom_id>/assoc_assignment/<int:assignment_id>/', views.assoc_assignment_to_classroom, name='assoc_assignment'),
+    # Unassociate assignments to classroom 
+    path('classrooms/<int:classroom_id>/unassoc_assignment/<int:assignment_id>/', views.unassoc_assignment_to_classroom, name='unassoc_assignment'),
     
 ]
