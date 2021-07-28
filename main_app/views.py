@@ -43,18 +43,19 @@ def classrooms_index(req):
 @login_required
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
-    return render(req, 'classrooms/detail.html', {'classroom': classroom})
-    
+    return render(req, 'classrooms/detail.html', {
+        'classroom': classroom,
+    })
+
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom
-    fields = '__all__'
+    fields = ['course_subject', 'course_number', 'course_name']
     success_url = '/classrooms/'
 
 class ClassroomUpdate(LoginRequiredMixin, UpdateView):
     model = Classroom
-    fields = '__all__'
+    fields = ['course_subject', 'course_number', 'course_name']
     success_url = '/classrooms/'
-
 
 class ClassroomDelete(LoginRequiredMixin, DeleteView):
     model = Classroom
