@@ -25,14 +25,13 @@ urlpatterns = [
     path('assignments/<int:pk>/delete', views.AssignmentDelete.as_view(), name='assignments_delete'),
     # Routes for User Auth
     path('accounts/signup/', views.signup, name='signup'), 
-    # Routes for Dashboard
-    path('dashboard/', views.dashboard_index, name='user_dashboard'),
+
     # Associate assignments to classroom 
     path('classrooms/<int:classroom_id>/assoc_assignment/<int:assignment_id>/', views.assoc_assignment_to_classroom, name='assoc_assignment'),
     # Unassociate assignments to classroom 
     path('classrooms/<int:classroom_id>/unassoc_assignment/<int:assignment_id>/', views.unassoc_assignment_to_classroom, name='unassoc_assignment'),
     
-    
-    path('dashboards/', views.dashboard, name='dashboard'), 
+    # Router for Dashboard
+    path('dashboard/', views.dashboard, name='dashboard'), 
     
 ]

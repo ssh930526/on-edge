@@ -113,16 +113,6 @@ def signup(request):
         'profile_form': profile_form 
     })
     # return render(request, 'registration/signup.html', context)
-   
-
-def dashboard_index(req):
-    assignments = Assignment.objects.filter(user=req.user)
-    classrooms = Classroom.objects.filter(user=req.user)
-    return render(req, 'dashboard.html', {
-        'assignments': assignments,
-        'classrooms': classrooms,
-        'user': req.user
-    })
   
 @login_required  
 def students_index(req):
@@ -155,10 +145,26 @@ class StudentsDelete(LoginRequiredMixin, DeleteView):
   }
 
 @login_required
-def dashboard(request):
+def dashboard(req):
   user_type = None
-  if request.user.profile.is_teacher:
+  assignments = Assignment.objects.filter(user=req.user)
+  classrooms = Classroom.objects.filter(user=req.user)
+
+  if req.user.profile.is_teacher:
     user_type = 'teacher'
   else:
     user_type = 'student'
-  return render(request, f'{user_type}_dashboard.html')
+  return render(req, f'{user_type}_dashboard.html', {
+        'assignments': assignments,
+        'classrooms': classrooms,
+        'user': req.user
+    })
+
+# def dashboard_index(req):
+#     assignments = Assignment.objects.filter(user=req.user)
+#     classrooms = Classroom.objects.filter(user=req.user)
+#     return render(req, 'dashboard.html', {
+#         'assignments': assignments,
+#         'classrooms': classrooms,
+#         'user': req.user
+#     })
