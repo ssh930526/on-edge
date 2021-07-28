@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
@@ -16,6 +18,9 @@
 
     <title>OnEdge</title>
 </head>
+<!-- <div class="imgContainer">
+    <img src="{% static 'images/picsum_img.jpg' %}" alt="">
+</div> -->
 <header class="navbar-fixed">
     <nav>
         <nav class="grey darken-3">
@@ -38,7 +43,10 @@
                         <a href="{% url 'assignments_index' %}">Assignments</a>
                     </li>
                     <li>
-                        <a href="">Students</a>
+                        <a href="{% url 'students_index' %}">Students</a>
+                    </li>
+                    <li>
+                        <a href="">{{ user.username }}</a>
                     </li>
                     <li>
                         <a href="{% url 'logout' %}">Logout</a>
