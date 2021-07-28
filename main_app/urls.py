@@ -32,4 +32,7 @@ urlpatterns = [
     # Unassociate assignments to classroom 
     path('classrooms/<int:classroom_id>/unassoc_assignment/<int:assignment_id>/', views.unassoc_assignment_to_classroom, name='unassoc_assignment'),
     
+    
+    path('dashboard/', views.dashboard, name='dashboard'), 
+    
 ]
