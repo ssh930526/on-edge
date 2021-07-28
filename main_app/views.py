@@ -90,7 +90,7 @@ class ClassroomDelete(LoginRequiredMixin, DeleteView):
 
 
 def signup(request):
-    # error_message = ''
+    error_message = ''
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
         profile_form = ProfileForm(request.POST)
@@ -104,8 +104,14 @@ def signup(request):
         else:
             error_message = 'Invalid Signup Data - Please Try Again'
     #create user
-    form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
+    user_form = UserCreationForm()
+    profile_form = ProfileForm()
+
+    return render(request, 'registration/signup.html', {
+        'user_form': user_form, 
+        'error_message': error_message,
+        'profile_form': profile_form 
+    })
     # return render(request, 'registration/signup.html', context)
    
 
