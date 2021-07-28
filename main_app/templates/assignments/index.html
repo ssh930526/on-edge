@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Current Assignments</h1>
 
-{% for assignment in assignment_list %}
+{% for assignment in assignments %}
 <a href="{% url 'assignments_detail' assignment.id %}">
     <div class="card">
         <div class="card-content">

@@ -14,22 +14,29 @@ def home(req):
 def about(req):
     return render(req, 'about.html')
 
-class AssignmentList(LoginRequiredMixin, ListView):
-    model = Assignment
+@login_required  
+def assignments_index(req):
+    assignments = Assignment.objects.filter(user=req.user)
+    return render(req, 'assignments/index.html', {'assignments': assignments})
 
-class AssignmenDetail(LoginRequiredMixin, DetailView ):
-    model = Assignment
-
+@login_required  
+def assignments_detail(req, assignment_id):
+    assignment = Assignment.objects.get(id=assignment_id)
+    return render(req, 'assignments/detail.html', {'assignment': assignment})
+    
 class AssignmentCreate(LoginRequiredMixin, CreateView):
     model = Assignment
     fields = ['description', 'due_date']
+    success_url = '/assignments/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+        
 class AssignmentUpdate(LoginRequiredMixin, UpdateView):
     model = Assignment
     fields = ['description', 'due_date']
+    success_url = '/assignments/'
 
 class AssignmentDelete(LoginRequiredMixin,DeleteView):
     model = Assignment
@@ -37,20 +44,38 @@ class AssignmentDelete(LoginRequiredMixin,DeleteView):
 
 @login_required  
 def classrooms_index(req):
-    classrooms = Classroom.objects.all()
+    classrooms = Classroom.objects.filter(user=req.user)
     return render(req, 'classrooms/index.html', {'classrooms': classrooms})
 
-@login_required
+@login_required  
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
+    assignments = Assignment.objects.filter(user=req.user)
+    unassigned_assignments = assignments.exclude(id__in = classroom.assignments.all().values_list('id'))
     return render(req, 'classrooms/detail.html', {
         'classroom': classroom,
+        'allAssignments': assignments,
+        'unassigned': unassigned_assignments
     })
+
+@login_required
+def assoc_assignment_to_classroom(req, classroom_id, assignment_id):
+    Classroom.objects.get(id=classroom_id).assignments.add(assignment_id)
+    return redirect('classrooms_detail', classroom_id=classroom_id)
+
+@login_required
+def unassoc_assignment_to_classroom(req, classroom_id, assignment_id):
+    Classroom.objects.get(id=classroom_id).assignments.remove(assignment_id)
+    return redirect('classrooms_detail', classroom_id=classroom_id)
 
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom
     fields = ['course_subject', 'course_number', 'course_name']
     success_url = '/classrooms/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class ClassroomUpdate(LoginRequiredMixin, UpdateView):
     model = Classroom
@@ -77,6 +102,15 @@ def signup(request):
     form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
   
+def dashboard_index(req):
+    assignments = Assignment.objects.filter(user=req.user)
+    classrooms = Classroom.objects.filter(user=req.user)
+    return render(req, 'dashboard.html', {
+        'assignments': assignments,
+        'classrooms': classrooms,
+        'user': req.user
+    })
+  
 @login_required  
 def students_index(req):
     students = Student.objects.all()
@@ -96,7 +130,6 @@ class StudentsUpdate(LoginRequiredMixin, UpdateView):
     model = Student
     fields = '__all__'
     success_url = '/students/'
-
 
 class StudentsDelete(LoginRequiredMixin, DeleteView):
     model = Student
