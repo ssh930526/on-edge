@@ -8,12 +8,13 @@
 <h1>Login</h1>
 
 <form action="{% url 'login' %}"  method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login" class="btn grey lighten-1 right">
-    
-    <input type="hidden" name="next" value="{{ next }}">   
-
+    <legend>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" class="btn grey lighten-1 right">
+        
+        <input type="hidden" name="next" value="{{ next }}">   
+    </legend>
 </form>
 
 {% endblock %}

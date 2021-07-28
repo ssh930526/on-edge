@@ -38,3 +38,7 @@ class Classroom(models.Model):
 
     def get_absolute_url(self):
         return reverse('classrooms_detail', kwargs={'pk': self.id})
+
+class Profile(models.Model):
+  is_teacher = models.BooleanField(default=False)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)

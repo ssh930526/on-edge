@@ -46,7 +46,7 @@
                         <a href="{% url 'students_index' %}">Students</a>
                     </li>
                     <li>
-                        <a href="">{{ user.username }}</a>
+                        <a href="{% url 'user_dashboard' %}">{{ user.username }}</a>
                     </li>
                     <li>
                         <a href="{% url 'logout' %}">Logout</a>
