@@ -88,7 +88,6 @@ class ClassroomDelete(LoginRequiredMixin, DeleteView):
     success_url = '/classrooms/'
 
 
-
 def signup(request):
     error_message = ''
     if request.method == 'POST':
