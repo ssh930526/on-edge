@@ -8,8 +8,8 @@
         <p>Class Name: {{ classroom.course_name }}</p>
     </div>
     <div class="card-action">
-        <a href="{% url 'classrooms_update' classroom.id %}">Edit</a>
-        <a href="{% url 'classrooms_delete' classroom.id %}">Delete</a>
+        <a href="{% url 'classrooms_update' classroom.id %}"> <i class="material-icons">edit</i></a>
+        <a href="{% url 'classrooms_delete' classroom.id %}"><i class="material-icons">delete</i></a>
     </div>
 </div>
 

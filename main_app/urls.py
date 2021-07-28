@@ -19,5 +19,6 @@ urlpatterns = [
     path('assignments/<int:pk>/delete', views.AssignmentDelete.as_view(), name='assignments_delete'),
     # Routes for User Auth
     path('accounts/signup/', views.signup, name='signup'), 
+    path('dashboard/', views.dashboard, name='dashboard'), 
     
 ]

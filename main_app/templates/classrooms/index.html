@@ -2,7 +2,19 @@
 
 {% block content %}
 
-<h1>Classroom List</h1>
+<h1 id="list">Classroom List</h1>
+<style>
+    #list{
+        color: rgb(186, 209, 132);
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: center;
+
+    }
+    body {
+      background-image: url('https://i.pinimg.com/originals/1b/9b/7b/1b9b7b85c5fec4715dab8600695e6450.png');
+    }
+</style>
+
 {% for classroom in classrooms %}
 <div class="card">
     <a href="{% url 'classrooms_detail' classroom.id %}">
@@ -13,5 +25,5 @@
     </a>
 </div>
 {% endfor %}
-<a href="{% url 'classrooms_create'%}">Create a Classroom</a>
+<a class="btn-floating pulse" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
 {% endblock %}
