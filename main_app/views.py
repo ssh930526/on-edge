@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import ProfileForm
 
 # Create your views here.
 def home(req):
@@ -86,22 +87,28 @@ class ClassroomDelete(LoginRequiredMixin, DeleteView):
     model = Classroom
     success_url = '/classrooms/'
 
+
+
 def signup(request):
-    error_message = ''
+    # error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        user_form = UserCreationForm(request.POST)
+        profile_form = ProfileForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
             login(request, user)
             return redirect('classrooms_index')
         else:
             error_message = 'Invalid Signup Data - Please Try Again'
-
-
     #create user
     form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
-  
+    # return render(request, 'registration/signup.html', context)
+   
+
 def dashboard_index(req):
     assignments = Assignment.objects.filter(user=req.user)
     classrooms = Classroom.objects.filter(user=req.user)
@@ -134,3 +141,18 @@ class StudentsUpdate(LoginRequiredMixin, UpdateView):
 class StudentsDelete(LoginRequiredMixin, DeleteView):
     model = Student
     success_url = '/students/'
+    user_form = UserCreationForm()
+    profile_form = ProfileForm()
+    context = {
+    'user_form': user_form, 
+    'profile_form': profile_form
+  }
+
+@login_required
+def dashboard(request):
+  user_type = None
+  if request.user.profile.is_teacher:
+    user_type = 'teacher'
+  else:
+    user_type = 'student'
+  return render(request, f'{user_type}_dashboard.html')

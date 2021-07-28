@@ -9,8 +9,8 @@
       <p><span class="heading">Due Date:</span> {{ assignment.due_date }}</p>
     </div>
     <div class="card-action">
-        <a href="{% url 'assignments_update' assignment.id %}">Edit</a>
-        <a href="{% url 'assignments_delete' assignment.id %}">Delete</a>
+        <a class="btn-floating pulse" href="{% url 'assignments_update' assignment.id %}"><i class="material-icons"> edit</i></a>
+        <a class="btn-floating pulse" href="{% url 'assignments_delete' assignment.id %}"><i class="material-icons"> delete</i></a>
     </div>
 </div>
 {% endblock %}
