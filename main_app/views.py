@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Assignment, Classroom
+from .models import Assignment, Classroom, Student
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
@@ -68,7 +68,6 @@ def unassoc_assignment_to_classroom(req, classroom_id, assignment_id):
     Classroom.objects.get(id=classroom_id).assignments.remove(assignment_id)
     return redirect('classrooms_detail', classroom_id=classroom_id)
 
-
 class ClassroomCreate(LoginRequiredMixin, CreateView):
     model = Classroom
     fields = ['course_subject', 'course_number', 'course_name']
@@ -103,7 +102,6 @@ def signup(request):
     form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
   
-    
 def dashboard_index(req):
     assignments = Assignment.objects.filter(user=req.user)
     classrooms = Classroom.objects.filter(user=req.user)
@@ -112,3 +110,27 @@ def dashboard_index(req):
         'classrooms': classrooms,
         'user': req.user
     })
+  
+@login_required  
+def students_index(req):
+    students = Student.objects.all()
+    return render(req, 'students/index.html', {'students': students})
+
+@login_required
+def students_detail(req, classroom_id):
+    classroom = Classroom.objects.get(id=classroom_id)
+    return render(req, 'classrooms/detail.html', {'classroom': classroom})
+
+class StudentsCreate(LoginRequiredMixin, CreateView):
+    model = Student
+    fields = '__all__'
+    success_url = '/students/'
+
+class StudentsUpdate(LoginRequiredMixin, UpdateView):
+    model = Student
+    fields = '__all__'
+    success_url = '/students/'
+
+class StudentsDelete(LoginRequiredMixin, DeleteView):
+    model = Student
+    success_url = '/students/'
