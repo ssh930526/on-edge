@@ -17,8 +17,10 @@
 </a>
 
 {% endfor %}
-<a class="btn-floating pulse lime lighten-4" id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
 
+{% if profile.is_teacher %}
+    <a class="btn-floating pulse lime lighten-4" id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
+{% endif %}
 
 <style>
     body {

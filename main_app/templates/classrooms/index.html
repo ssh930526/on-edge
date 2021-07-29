@@ -4,6 +4,11 @@
 
 <h1 id="list">Classroom List</h1>
 <style>
+    #list{
+        color: rgb(186, 209, 132);
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
     body {
       background-image: url('https://pic.52112.com/2021/01/28/22/28225816_eb2f9123b9_small.jpg');
       background-repeat: no-repeat;
@@ -21,5 +26,8 @@
     </a>
 </div>
 {% endfor %}
-<a class="btn-floating pulse lime lighten-4" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
+{% if profile.is_teacher %}
+   <a class="btn-floating pulse lime lighten-4" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
+{% endif %}
+
 {% endblock %}
