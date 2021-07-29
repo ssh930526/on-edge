@@ -1,1 +1,1 @@
-web: gunicorn onedge-app.wsgi
+web: gunicorn onedge.wsgi
