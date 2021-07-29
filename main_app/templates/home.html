@@ -13,7 +13,28 @@
     <div class="col s10 m8 offset-m2 l6 offset-l3"> 
       <div class="row valign-wrapper">
           <div class="col s10">
-              <img src="https://icon-library.com/images/online-class-icon/online-class-icon-17.jpg" alt="" class="circle responsive-img"> 
+            <div class="w3-content w3-section" style="max-width:300px">
+              <img class="mySlides w3-animate-fading" src="https://icon-library.com/images/online-class-icon/online-class-icon-17.jpg" style="width:80%"> 
+              <img class="mySlides w3-animate-fading" src="https://res.cloudinary.com/highereducation/image/upload/c_fill,f_auto,fl_lossy,q_auto/v1/AccreditedSchoolsOnline.org/subjects/school-elementary-bac-img.png" style="width:100%">
+              <img class="mySlides w3-animate-fading" src="https://www.cbsd.org/cms/lib/PA01916442/Centricity/Domain/2720/welcome%20to%20distance%20learning.png" style="width:100%">
+              <img class="mySlides w3-animate-fading" src="http://d279m997dpfwgl.cloudfront.net/wp/2019/10/WBUR_Cerrato_Header_Illustration_Small_Colleges_Online-1000x666.jpg" style="width:100%">
+            </div>
+            <script>
+              var myIndex = 0;
+              carousel();
+              
+              function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                  x[i].style.display = "none";  
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}    
+                x[myIndex-1].style.display = "block";  
+                setTimeout(carousel, 1000);    
+              }
+              </script>
           </div>
             <div class="col s20">
               <span class="b0bec5 blue-grey-text" id="page">

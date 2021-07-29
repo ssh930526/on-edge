@@ -124,9 +124,9 @@ def students_index(req):
     return render(req, 'students/index.html', {'students': students})
 
 @login_required
-def students_detail(req, classroom_id):
-    classroom = Classroom.objects.get(id=classroom_id)
-    return render(req, 'classrooms/detail.html', {'classroom': classroom})
+def students_detail(req, student_id):
+    student = Student.objects.get(id=student_id)
+    return render(req, 'students/detail.html', {'student': student})
 
 class StudentsCreate(LoginRequiredMixin, CreateView):
     model = Student

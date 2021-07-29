@@ -2,14 +2,16 @@
 
 {% block content%}
 
-<h1>Delete Student</h1>
+<h1 id="delete">Delete Student</h1>
 
-<h4>Are you sure you want to delete <span class="teal-text">{{ object.first_name }} {{ object.last_name }}</span>?</h4>
+<img id="img1"src="https://i.pinimg.com/736x/72/6b/1c/726b1c5baeda1003f86847cc28d73fd0.jpg">
+
+<h4>Are you sure you want to delete <span class="teal-text ndigo lighten-2">{{ object.first_name }} {{ object.last_name }}</span>?</h4>
 
 <form action="" method="POST">
     {% csrf_token %}
-    <input class="btn" type="submit" value="Yes - Delete!">
-    <a href="">Cancel</a>
+    <input class="btn-floating pulse lime lighten-4" type="submit" value="✔︎">
+    <input class="btn-floating pulse lime lighten-4" type="submit" value="✘" href="">
 </form>
 
 {% endblock %}
