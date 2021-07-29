@@ -12,8 +12,8 @@
         {% endif %}
 
         {% csrf_token %}
+        {{ profile_form.as_p }}
         {{ user_form.as_p }}
-        <!-- {{ profile_form.as_p }} -->
         <p>
             <label>
                 {{ profile_form.is_teacher }}

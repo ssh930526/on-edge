@@ -18,7 +18,10 @@ def about(req):
 @login_required  
 def assignments_index(req):
     assignments = Assignment.objects.filter(user=req.user)
-    return render(req, 'assignments/index.html', {'assignments': assignments})
+    return render(req, 'assignments/index.html', {
+        'assignments': assignments,
+        'profile': req.user.profile   
+    })
 
 @login_required  
 def assignments_detail(req, assignment_id):
@@ -46,17 +49,24 @@ class AssignmentDelete(LoginRequiredMixin,DeleteView):
 @login_required  
 def classrooms_index(req):
     classrooms = Classroom.objects.filter(user=req.user)
-    return render(req, 'classrooms/index.html', {'classrooms': classrooms})
+    return render(req, 'classrooms/index.html', {
+        'classrooms': classrooms,
+         'profile': req.user.profile   
+        })
 
 @login_required  
 def classrooms_detail(req, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
     assignments = Assignment.objects.filter(user=req.user)
+    students = Student.objects.all()
     unassigned_assignments = assignments.exclude(id__in = classroom.assignments.all().values_list('id'))
+    unassigned_students = students.exclude(id__in = classroom.students.all().values_list('id'))
     return render(req, 'classrooms/detail.html', {
         'classroom': classroom,
         'allAssignments': assignments,
-        'unassigned': unassigned_assignments
+        'unassigned': unassigned_assignments,
+        'all_students': students,
+        'unassigned_students': unassigned_students
     })
 
 @login_required
@@ -144,6 +154,16 @@ class StudentsDelete(LoginRequiredMixin, DeleteView):
   }
 
 @login_required
+def assoc_student_to_classroom(req, classroom_id, student_id):
+    Classroom.objects.get(id=classroom_id).students.add(student_id)
+    return redirect('classrooms_detail', classroom_id=classroom_id)
+
+@login_required
+def unassoc_student_to_classroom(req, classroom_id, student_id):
+    Classroom.objects.get(id=classroom_id).students.remove(student_id)
+    return redirect('classrooms_detail', classroom_id=classroom_id)
+
+@login_required
 def dashboard(req):
   user_type = None
   assignments = Assignment.objects.filter(user=req.user)
@@ -156,14 +176,7 @@ def dashboard(req):
   return render(req, f'{user_type}_dashboard.html', {
         'assignments': assignments,
         'classrooms': classrooms,
-        'user': req.user
+        'user': req.user,
+        'profile': req.user.profile
     })
 
-# def dashboard_index(req):
-#     assignments = Assignment.objects.filter(user=req.user)
-#     classrooms = Classroom.objects.filter(user=req.user)
-#     return render(req, 'dashboard.html', {
-#         'assignments': assignments,
-#         'classrooms': classrooms,
-#         'user': req.user
-#     })
