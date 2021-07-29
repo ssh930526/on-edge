@@ -88,9 +88,8 @@ class ClassroomDelete(LoginRequiredMixin, DeleteView):
     success_url = '/classrooms/'
 
 
-
 def signup(request):
-    # error_message = ''
+    error_message = ''
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
         profile_form = ProfileForm(request.POST)
@@ -104,19 +103,15 @@ def signup(request):
         else:
             error_message = 'Invalid Signup Data - Please Try Again'
     #create user
-    form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message })
-    # return render(request, 'registration/signup.html', context)
-   
+    user_form = UserCreationForm()
+    profile_form = ProfileForm()
 
-def dashboard_index(req):
-    assignments = Assignment.objects.filter(user=req.user)
-    classrooms = Classroom.objects.filter(user=req.user)
-    return render(req, 'dashboard.html', {
-        'assignments': assignments,
-        'classrooms': classrooms,
-        'user': req.user
+    return render(request, 'registration/signup.html', {
+        'user_form': user_form, 
+        'error_message': error_message,
+        'profile_form': profile_form 
     })
+    # return render(request, 'registration/signup.html', context)
   
 @login_required  
 def students_index(req):
@@ -124,9 +119,9 @@ def students_index(req):
     return render(req, 'students/index.html', {'students': students})
 
 @login_required
-def students_detail(req, classroom_id):
-    classroom = Classroom.objects.get(id=classroom_id)
-    return render(req, 'classrooms/detail.html', {'classroom': classroom})
+def students_detail(req, student_id):
+    student = Student.objects.get(id=student_id)
+    return render(req, 'students/detail.html', {'student': student})
 
 class StudentsCreate(LoginRequiredMixin, CreateView):
     model = Student
@@ -149,10 +144,26 @@ class StudentsDelete(LoginRequiredMixin, DeleteView):
   }
 
 @login_required
-def dashboard(request):
+def dashboard(req):
   user_type = None
-  if request.user.profile.is_teacher:
+  assignments = Assignment.objects.filter(user=req.user)
+  classrooms = Classroom.objects.filter(user=req.user)
+
+  if req.user.profile.is_teacher:
     user_type = 'teacher'
   else:
     user_type = 'student'
-  return render(request, f'{user_type}_dashboard.html')
+  return render(req, f'{user_type}_dashboard.html', {
+        'assignments': assignments,
+        'classrooms': classrooms,
+        'user': req.user
+    })
+
+# def dashboard_index(req):
+#     assignments = Assignment.objects.filter(user=req.user)
+#     classrooms = Classroom.objects.filter(user=req.user)
+#     return render(req, 'dashboard.html', {
+#         'assignments': assignments,
+#         'classrooms': classrooms,
+#         'user': req.user
+#     })
