@@ -17,6 +17,7 @@ urlpatterns = [
     path('students/create/', views.StudentsCreate.as_view(), name='students_create'),
     path('students/<int:pk>/update/', views.StudentsUpdate.as_view(), name='students_update'),
     path('students/<int:pk>/delete/', views.StudentsDelete.as_view(), name='students_delete'),
+    path('students/<int:student_id>/add_photo', views.add_photo, name='add_photo'),
     # Routes for Assignments
     path('assignments/', views.assignments_index, name='assignments_index'),
     path('assignments/<int:assignment_id>/', views.assignments_detail, name='assignments_detail'),
