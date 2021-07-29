@@ -42,3 +42,10 @@ class Classroom(models.Model):
 class Profile(models.Model):
   is_teacher = models.BooleanField(default=False)
   user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for student_id: {self.student_id} @{self.url}"

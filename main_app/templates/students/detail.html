@@ -11,6 +11,18 @@
         <a href="{% url 'students_update' student.id %}">Edit</a>
         <a href="{% url 'students_delete' student.id %}">Delete</a>
     </div>
+    {% for photo in student.photo_set.all %}
+        <img src="{{ photo.url }}" alt="{{ student.first_name }} {{ student.last_name }}" class="responsive-img card-panel">
+    {% empty %}
+        <div class="card-panel teal-text center-align">No Photos Uploaded</div>    
+    {% endfor %}
+    <form class="card-panel" action="{% url 'add_photo' student.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <br>
+        <br>
+        <input type="submit" class="btn" value="Upload Photo">
+    </form>
 </div>
 
 {% endblock%}

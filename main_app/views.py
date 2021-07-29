@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Assignment, Classroom, Student
+from .models import Assignment, Classroom, Student, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
@@ -7,6 +7,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileForm
+
+import boto3
+import uuid
+
+S3_BASE_URL = 'https://s3-us-east-1.amazon.aws.com'
+BUCKET = 'onedge'
 
 # Create your views here.
 def home(req):
@@ -124,9 +130,9 @@ def students_index(req):
     return render(req, 'students/index.html', {'students': students})
 
 @login_required
-def students_detail(req, classroom_id):
-    classroom = Classroom.objects.get(id=classroom_id)
-    return render(req, 'classrooms/detail.html', {'classroom': classroom})
+def students_detail(req, student_id):
+    student = Student.objects.get(id=student_id)
+    return render(req, 'students/detail.html', {'student': student})
 
 class StudentsCreate(LoginRequiredMixin, CreateView):
     model = Student
@@ -156,3 +162,17 @@ def dashboard(request):
   else:
     user_type = 'student'
   return render(request, f'{user_type}_dashboard.html')
+
+def add_photo(request, student_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, student_id=student_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('students_detail', student_id=student_id)
