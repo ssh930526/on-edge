@@ -46,7 +46,10 @@ class AssignmentDelete(LoginRequiredMixin,DeleteView):
 @login_required  
 def classrooms_index(req):
     classrooms = Classroom.objects.filter(user=req.user)
-    return render(req, 'classrooms/index.html', {'classrooms': classrooms})
+    return render(req, 'classrooms/index.html', {
+        'classrooms': classrooms,
+         'profile': req.user.profile   
+        })
 
 @login_required  
 def classrooms_detail(req, classroom_id):
@@ -156,14 +159,7 @@ def dashboard(req):
   return render(req, f'{user_type}_dashboard.html', {
         'assignments': assignments,
         'classrooms': classrooms,
-        'user': req.user
+        'user': req.user,
+        'profile': req.user.profile
     })
 
-# def dashboard_index(req):
-#     assignments = Assignment.objects.filter(user=req.user)
-#     classrooms = Classroom.objects.filter(user=req.user)
-#     return render(req, 'dashboard.html', {
-#         'assignments': assignments,
-#         'classrooms': classrooms,
-#         'user': req.user
-#     })

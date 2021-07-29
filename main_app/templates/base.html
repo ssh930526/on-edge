@@ -15,7 +15,6 @@
     rel="stylesheet">
     <!-- Compiled and minified Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <title>OnEdge</title>
 </head>
 <!-- <div class="imgContainer">
@@ -36,15 +35,31 @@
                         <a href="{% url 'about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'classrooms_index' %}">Classrooms</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'assignments_index' %}">Assignments</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'students_index' %}">Students</a>
-                    </li>
+                    
+                    {% if user.profile.is_teacher %}
+                        <li>
+                            <a href="{% url 'classrooms_index' %}">Classrooms</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'classrooms_index' %}">{{ user.profile.first_name }}'s Classrooms</a>
+                        </li>
+                    {% endif %}
+
+                    {% if user.profile.is_teacher %}
+                        <li>
+                            <a href="{% url 'assignments_index' %}">assignments</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'assignments_index' %}">{{ user.profile.first_name }}'s assignments</a>
+                        </li>
+                    {% endif %}
+                    {%  if user.profile.is_teacher %}        
+                        <li>
+                            <a href="{% url 'students_index' %}">Students</a>
+                        </li>
+                    {% endif %}        
                     <li>
                         <a href="{% url 'dashboard' %}">{{ user.username }}</a>
                     </li>
