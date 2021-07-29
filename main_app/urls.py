@@ -13,7 +13,7 @@ urlpatterns = [
     path('classrooms/<int:pk>/delete/', views.ClassroomDelete.as_view(), name='classrooms_delete'),
     # Routes for Students
     path('students/', views.students_index, name='students_index'),
-    path('students/<int:classroom_id>/', views.students_detail, name='students_detail'),
+    path('students/<int:student_id>/', views.students_detail, name='students_detail'),
     path('students/create/', views.StudentsCreate.as_view(), name='students_create'),
     path('students/<int:pk>/update/', views.StudentsUpdate.as_view(), name='students_update'),
     path('students/<int:pk>/delete/', views.StudentsDelete.as_view(), name='students_delete'),
@@ -25,14 +25,13 @@ urlpatterns = [
     path('assignments/<int:pk>/delete', views.AssignmentDelete.as_view(), name='assignments_delete'),
     # Routes for User Auth
     path('accounts/signup/', views.signup, name='signup'), 
-    # Routes for Dashboard
-    path('dashboard/', views.dashboard_index, name='user_dashboard'),
+
     # Associate assignments to classroom 
     path('classrooms/<int:classroom_id>/assoc_assignment/<int:assignment_id>/', views.assoc_assignment_to_classroom, name='assoc_assignment'),
     # Unassociate assignments to classroom 
     path('classrooms/<int:classroom_id>/unassoc_assignment/<int:assignment_id>/', views.unassoc_assignment_to_classroom, name='unassoc_assignment'),
     
-    
+    # Router for Dashboard
     path('dashboard/', views.dashboard, name='dashboard'), 
     
 ]
