@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if object %}
-    <h1 id="edit_student">Edit <span id="student_name" class="teal-text ndigo lighten-2">{{ object.first_name }}{{ object.last_name }}</span></h1>
+    <h1 id="edit_student">Edit <span id="student_name" class="teal-text ndigo lighten-2">{{ object.first_name }} {{ object.last_name }}</span></h1>
 {% else %}
     <h1 id="edit_student">Add A New Student</h1>
 {% endif %}
