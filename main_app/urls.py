@@ -31,6 +31,9 @@ urlpatterns = [
     # Unassociate assignments to classroom 
     path('classrooms/<int:classroom_id>/unassoc_assignment/<int:assignment_id>/', views.unassoc_assignment_to_classroom, name='unassoc_assignment'),
     
+    path('classrooms/<int:classroom_id>/assoc_student/<int:student_id>/', views.assoc_student_to_classroom, name='assoc_student'),
+    path('classrooms/<int:classroom_id>/unassoc_student/<int:student_id>/', views.unassoc_student_to_classroom, name='unassoc_student'),
+    
     # Router for Dashboard
     path('dashboard/', views.dashboard, name='dashboard'), 
     
