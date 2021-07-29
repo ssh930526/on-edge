@@ -19,29 +19,14 @@
 {% endfor %}
 
 {% if profile.is_teacher %}
-    <a id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i>Create an Assignment</a>
+    <a class="btn-floating pulse lime lighten-4" id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
 {% endif %}
-
-
 
 <style>
     body {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8eYyAr3CAH6jI0MGAnwa2El8oLZURFCzu9A&usqp=CAU')
-    }
-    #assigment{
-        text-align: center;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        color: rgb(151, 76, 68);
-    }
-    #card{
-        font-family: fantasy;
-        color:slategray;
-    }
-
-    #add {
-        color: rgb(122, 42, 10);
-        font-weight: bold;
-        font-family: monospace;
+      background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/34/41/vj3iml.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
     }
     </style>
 

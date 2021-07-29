@@ -10,22 +10,24 @@
         text-align: center;
     }
     body {
-      background-image: url('https://i.pinimg.com/originals/1b/9b/7b/1b9b7b85c5fec4715dab8600695e6450.png');
+      background-image: url('https://pic.52112.com/2021/01/28/22/28225816_eb2f9123b9_small.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
     }
 </style>
 
 {% for classroom in classrooms %}
-<div class="card">
+<div id="room" class="card">
     <a href="{% url 'classrooms_detail' classroom.id %}">
-        <div class="card-content">
+        <div id="classroom" class="card-content">
             <span class="card-title">{{ classroom.course_subject }} {{ classroom.course_number }}</span>
             <p>Course Name: {{ classroom.course_name }}</p>
         </div>
     </a>
 </div>
 {% endfor %}
-
 {% if profile.is_teacher %}
-    <a class="btn-floating pulse" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
+   <a class="btn-floating pulse lime lighten-4" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
 {% endif %}
+
 {% endblock %}

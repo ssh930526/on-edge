@@ -3,20 +3,26 @@
 {% block content %}
 
 {% if object %}
-<h1>Edit Assignment {{ object.id }}</h1>
+<h1 id="edit">Edit Assignment {{ object.id }}</h1>
 {% else %}
-<h1>Add New Assignment</h1>
+<h1 id="edit">Add New Assignment</h1>
 {% endif %}
-
+<style>
+    body {
+      background-image: url('https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-learning-clip-decorative-border-image_1452048.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+    }
+</style>
 <form action="" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
     {% if object %}
-    <input type="submit" value='Confirm Edits' class="btn">
+    <input type="submit" value='✔︎' class="btn-floating pulse lime lighten-4">
     {% else %}
-    <input type="submit" value='Create Assignment' class="btn">
+    <input type="submit" value='✚' class="btn-floating pulse lime lighten-4">
     {% endif %}
 </form>
 
