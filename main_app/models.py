@@ -45,7 +45,7 @@ class Profile(models.Model):
   last_name = models.CharField(max_length=100, default=None)
   email = models.EmailField(default=None)
 
-  class Photo(models.Model):
+class Photo(models.Model):
     url = models.CharField(max_length=200)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
