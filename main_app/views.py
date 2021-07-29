@@ -11,7 +11,7 @@ from .forms import ProfileForm
 import boto3
 import uuid
 
-S3_BASE_URL = 'https://s3-us-east-1.amazon.aws.com'
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
 BUCKET = 'onedge'
 
 # Create your views here.
