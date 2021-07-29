@@ -3,9 +3,9 @@
 {% block content %}
 
 {% if object %}
-    <h1>Edit <span class="teal-text">{{ object.first_name }}{{ object.last_name }}</span></h1>
+    <h1 id="edit_student">Edit <span id="student_name" class="teal-text ndigo lighten-2">{{ object.first_name }} {{ object.last_name }}</span></h1>
 {% else %}
-    <h1>Add A New Student</h1>
+    <h1 id="edit_student">Add A New Student</h1>
 {% endif %}
 
 <form action="" method="POST">
@@ -13,7 +13,14 @@
     <table>
         {{ form.as_table }}
     </table>
-    <input class="btn" type="Submit" value="Submit">
+    <input class="btn-floating pulse lime lighten-4" type="Submit" value="✔︎">
 </form>
+<style>
+    body {
+      background-image: url('https://www.ppt-backgrounds.net/thumbs/simple-designs-images--pictures--becuo-picture-image.jpeg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;   
+    }
+</style>
 
 {% endblock %}

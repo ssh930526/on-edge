@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Classroom Details</h1>
-<div class="card">
+<h1 id="classroom_det">Classroom Details</h1>
+<style>
+    body {
+      background-image: url('https://i.pinimg.com/originals/35/00/bb/3500bbb71cfdc165506e7e65f0428866.jpg');
+      background-repeat: no-repeat;
+      background-size:  100% 100%; 
+    }
+</style>
+<div id="classroom_card" class="card">
     <div class="card-content">
         <span class="card-title">{{ classroom.course_subject }} {{ classroom.course_number }}</span>
         <p>{{ classroom.course_name }}</p>
         <br>
+        <a class="btn-floating pulse lime lighten-4"  href="{% url 'classrooms_update' classroom.id %}"> <i class="material-icons">edit</i></a>
+        <a class="btn-floating pulse lime lighten-4"  href="{% url 'classrooms_delete' classroom.id %}"><i class="material-icons">delete</i></a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
         <div class="row">
             <div class="col s6">
                 <div id="currentAssignments">
@@ -25,13 +39,13 @@
                                 <div class="card-action">
                                     <form action="{% url 'unassoc_assignment' classroom.id assignment.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn" type="submit">Remove from Class</button>
+                                        <button class="btn-floating pulse lime lighten-4"  type="submit"><i class="material-icons">delete</i></button>
                                     </form>
                                 </div>
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p>No Assignments added to Class</p>
+                        <p class="blue-text text-darken-2">No Assignments added to Class</p>
                     {% endif %}
                 </div>
             </div>
@@ -50,24 +64,76 @@
                                 <div class="card-action">
                                     <form action="{% url 'assoc_assignment' classroom.id assignment.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn" type="submit">Add to Class</button>
+                                        <button class="btn-floating pulse lime lighten-4"  type="submit"><i class="material-icons"> add</i></button>
                                     </form>
                                 </div>
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p>No more assignments</p>
+                        <p class=" red lighten-2">No more assignments</p>
 
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    <div class="card-action">
-        <a href="{% url 'classrooms_update' classroom.id %}"> <i class="material-icons">edit</i></a>
-        <a href="{% url 'classrooms_delete' classroom.id %}"><i class="material-icons">delete</i></a>
+</div>
+
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s6">
+                <div id="currentAssignments">
+                    <h5>Students</h5>
+                    {% if classroom.students.count %}
+                        {% for student in classroom.students.all %}
+                            <div class="card addedAssignment">
+                                <div class="card-content">
+                                    <span class="card-title">
+                                        {{ student.first_name }} {{ student.last_name }}
+                                    </span>
+                                </div>
+                                <div class="card-action">
+                                    <form action="{% url 'unassoc_student' classroom.id student.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn" type="submit">Remove from Class</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No Students Enrolled</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col s6">
+                <div id="availAssignments">
+                    <h5>Unassigned Students</h5>
+                    {% if unassigned_students.count %}
+                        {% for student in unassigned_students.all %}
+                            <div class="card unassigned">
+                                <div class="card-content">
+                                    <span class="card-title">
+                                        {{ student.first_name }} {{ student.last_name }}
+                                    </span>
+                                </div>
+                                <div class="card-action">
+                                    <form action="{% url 'assoc_student' classroom.id student.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn" type="submit">Add to Class</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>All Students Enrolled</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <script>
     $(document).ready(function () {

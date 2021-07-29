@@ -18,7 +18,6 @@ class Assignment(models.Model):
     # completed_date = models.DateField(null=True) 
     user = models.ForeignKey(User, on_delete=CASCADE)
 
-
     def __str__(self):
         return self.description
 
@@ -40,10 +39,13 @@ class Classroom(models.Model):
         return reverse('classrooms_detail', kwargs={'pk': self.id})
 
 class Profile(models.Model):
-  is_teacher = models.BooleanField(default=False)
+  is_teacher = models.BooleanField()
   user = models.OneToOneField(User, on_delete=models.CASCADE)
+  first_name = models.CharField(max_length=100, default=None)
+  last_name = models.CharField(max_length=100, default=None)
+  email = models.EmailField(default=None)
 
-class Photo(models.Model):
+  class Photo(models.Model):
     url = models.CharField(max_length=200)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
 

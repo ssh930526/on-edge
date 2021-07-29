@@ -2,16 +2,25 @@
 
 {% block content %}
 
-<h1>Students List</h1>
+<h1 id="lists">Students List</h1>
+
+<style>
+    body {
+      background-image: url('https://i.pinimg.com/originals/ab/6b/8a/ab6b8abe29997cd674cd4684067fb06f.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+    }
+</style>
 {% for student in students %}
-<div class="card">
+<div id="list_card"class="card">
     <a href="{% url 'students_detail' student.id %}">
-        <div class="card-content">
+        <div id="student_card" class="card-content">
             <span class="card-title">{{ student.first_name }} {{ student.last_name }}</span>
             <p>Age: {{ student.age }}</p>
         </div>
     </a>
 </div>
 {% endfor %}
-<a href="{% url 'students_create' %}">Add A Students</a>
+<a id="button" class="btn-floating pulse lime lighten-4" href="{% url 'students_create'%}"><i class="material-icons"> add</i></a>
+
 {% endblock %}

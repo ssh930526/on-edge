@@ -3,26 +3,29 @@
 
 {% block content %}
 
-
-
-
-
-<form action="{% url 'signup' %}"  method="POST">
+<form class="form" action="{% url 'signup' %}" method="POST">
     <legend>
         <h1>Signup</h1>
 
         {% if error_message %}
-            <p class="red text">{{ error_message }}</p>
-        {% endif %} 
-        
+        <p class="red text">{{ error_message }}</p>
+        {% endif %}
+
         {% csrf_token %}
-        {{ form.as_p }}
         {{ profile_form.as_p }}
+        {{ user_form.as_p }}
+        <p>
+            <label>
+                {{ profile_form.is_teacher }}
+                <span>I am a Teacher</span>
+            </label>
+        </p>
+    
+        <input type="checkbox">
         <input type="submit" value="Signup" class="btn blue-grey lighten-2 right">
     </legend>
-     
+
 </form>
 
+
 {% endblock %}
-
-
