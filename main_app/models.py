@@ -41,3 +41,8 @@ class Classroom(models.Model):
 class Profile(models.Model):
   is_teacher = models.BooleanField()
   user = models.OneToOneField(User, on_delete=models.CASCADE)
+  first_name = models.CharField(max_length=100, default=None)
+  last_name = models.CharField(max_length=100, default=None)
+  email = models.EmailField(default=None)
+
+
