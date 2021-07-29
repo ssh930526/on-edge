@@ -17,7 +17,11 @@
 </a>
 
 {% endfor %}
-<a id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i>Create an Assignment</a>
+
+{% if profile.is_teacher %}
+    <a id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i>Create an Assignment</a>
+{% endif %}
+
 
 
 <style>

@@ -18,7 +18,10 @@ def about(req):
 @login_required  
 def assignments_index(req):
     assignments = Assignment.objects.filter(user=req.user)
-    return render(req, 'assignments/index.html', {'assignments': assignments})
+    return render(req, 'assignments/index.html', {
+        'assignments': assignments,
+        'profile': req.user.profile   
+    })
 
 @login_required  
 def assignments_detail(req, assignment_id):
