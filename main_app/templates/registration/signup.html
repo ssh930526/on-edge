@@ -3,29 +3,42 @@
 
 {% block content %}
 
-<form class="form" action="{% url 'signup' %}" method="POST">
-    <legend>
-        <h1>Signup</h1>
+<h1 class="nav-header">Signup for OnEdge™</h1>
 
-        {% if error_message %}
-        <p class="red text">{{ error_message }}</p>
-        {% endif %}
-
-        {% csrf_token %}
-        {{ profile_form.as_p }}
-        {{ user_form.as_p }}
-        <p>
-            <label>
-                {{ profile_form.is_teacher }}
-                <span>I am a Teacher</span>
-            </label>
-        </p>
-    
-        <input type="checkbox">
-        <input type="submit" value="Signup" class="btn blue-grey lighten-2 right">
-    </legend>
-
-</form>
-
+<div id="signupContainer">
+    <div class="card signupCard">
+        <div class="card-content">
+            <form class="form" action="{% url 'signup' %}" method="POST">
+                <legend id="signupForm">
+                    {% if error_message %}
+                    <p class="red text">{{ error_message }}</p>
+                    {% endif %}
+            
+                    {% csrf_token %}
+                    {{ profile_form.as_p }}
+                    {{ user_form.as_p }}
+                    <br>
+                    <br>
+                    <p>
+                        <label>
+                            {{ profile_form.is_teacher }}
+                            <span class="label">I am a Teacher</span>
+                        </label>
+                    </p>
+                    <input type="checkbox">
+                    <input id="signupBtn" type="submit" value="Signup" class="btn">
+                </legend>
+            
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+    }
+</style>
 
 {% endblock %}
