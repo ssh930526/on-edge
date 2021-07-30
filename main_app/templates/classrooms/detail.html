@@ -70,7 +70,7 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p class=" red lighten-2">No more assignments</p>
+                        <p class="blue-text text-darken-2">No more assignments</p>
 
                     {% endif %}
                 </div>
@@ -102,7 +102,7 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p>No Students Enrolled</p>
+                        <p class="blue-text text-darken-2">No Students Enrolled</p>
                     {% endif %}
                 </div>
             </div>
@@ -126,19 +126,12 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p>All Students Enrolled</p>
+                        <p class="blue-text text-darken-2">All Students Enrolled</p>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function () {
-        $('select').formSelect();
-    });
-</script>
 
 {% endblock%}

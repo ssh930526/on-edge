@@ -8,14 +8,21 @@
     <h1 class="nav-header">Add A New Student</h1>
 {% endif %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <br>
-    <input class="btn-floating icons" type="Submit" value="✔︎">
-</form>
+<div id="studentContainer">
+    <div class="card">
+        <div class="card-content">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <br>
+                <input class="btn-floating icons" type="Submit" value="✔︎">
+            </form>
+        </div>
+    </div>
+</div>
+
 <style>
     body {
         background-image: url('https://cdn.wallpapersafari.com/78/70/XIbUE1.jpg');

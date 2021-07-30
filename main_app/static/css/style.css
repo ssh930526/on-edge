@@ -268,19 +268,17 @@ footer {
 }
 
 #aboutText {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
+    background-color: rgba(66, 14, 114, 0.05);
+    padding: 20px 0 20px 0;
+    border-top: 5px solid rgb(66, 14, 114);
+    border-bottom: 5px solid rgb(66, 14, 114);
 }
 
 #contact {
     display: flex;
     margin-top: 10px;
-}
-
-.leaderImg {
-    /* height: 11rem; */
-    /* border-radius: 50%; */
-    /* padding-right: 20px; */
 }
 
 .leaderTitle {
@@ -295,7 +293,9 @@ footer {
     padding: 15px;
     margin: 0 20px 0 20px;
     width: 35rem;
-    background-color: rgb(240, 240, 240); 
+    background-color: rgba(66, 14, 114, 0.05); 
+    border-top: 5px solid rgba(66, 14, 114, 0.05); 
+    border-bottom: rgba(66, 14, 114, 0.05); 
 }
 
 .leaderName {
