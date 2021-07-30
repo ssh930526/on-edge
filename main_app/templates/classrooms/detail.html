@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 id="classroom_det">Classroom Details</h1>
+<h1 class="nav-header" >Classroom Details</h1>
 <style>
     body {
-      background-image: url('https://i.pinimg.com/originals/35/00/bb/3500bbb71cfdc165506e7e65f0428866.jpg');
+        background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
       background-repeat: no-repeat;
-      background-size:  100% 100%; 
+      background-size: 100% 100%; 
     }
 </style>
 <div id="classroom_card" class="card">
@@ -14,8 +14,8 @@
         <span class="card-title">{{ classroom.course_subject }} {{ classroom.course_number }}</span>
         <p>{{ classroom.course_name }}</p>
         <br>
-        <a class="btn-floating pulse lime lighten-4"  href="{% url 'classrooms_update' classroom.id %}"> <i class="material-icons">edit</i></a>
-        <a class="btn-floating pulse lime lighten-4"  href="{% url 'classrooms_delete' classroom.id %}"><i class="material-icons">delete</i></a>
+        <a class="btn-floating icons"  href="{% url 'classrooms_update' classroom.id %}"> <i class="material-icons">edit</i></a>
+        <a class="btn-floating icons"  href="{% url 'classrooms_delete' classroom.id %}"><i class="material-icons">delete</i></a>
     </div>
 </div>
 
@@ -39,7 +39,7 @@
                                 <div class="card-action">
                                     <form action="{% url 'unassoc_assignment' classroom.id assignment.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn-floating pulse lime lighten-4"  type="submit"><i class="material-icons">delete</i></button>
+                                        <button class="btn-floating icons"  type="submit"><i class="material-icons">delete</i></button>
                                     </form>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="card-action">
                                     <form action="{% url 'assoc_assignment' classroom.id assignment.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn-floating pulse lime lighten-4"  type="submit"><i class="material-icons"> add</i></button>
+                                        <button class="btn-floating icons"  type="submit"><i class="material-icons"> add</i></button>
                                     </form>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                 <div class="card-action">
                                     <form action="{% url 'unassoc_student' classroom.id student.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn" type="submit">Remove from Class</button>
+                                        <button class="btn-floating icons" type="submit"><i class="material-icons">delete</i></button>
                                     </form>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                 <div class="card-action">
                                     <form action="{% url 'assoc_student' classroom.id student.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button class="btn" type="submit">Add to Class</button>
+                                        <button class="btn-floating icons" type="submit"><i class="material-icons">add</i></button>
                                     </form>
                                 </div>
                             </div>

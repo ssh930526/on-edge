@@ -2,6 +2,62 @@
 
 {% block content %}
 
-<h1>Student Dashboard</h1>
+
+<div class="row">
+    <div class="col s12">
+        <h2 class="dashHeader nav-header">{{ profile.first_name }}'s Dashboard</h2>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://1en5vh48t4rqdnq1j3h9ihn4-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/80472162.jpg">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h4>{{ profile.first_name }} {{ profile.last_name }}</h4>
+                    <span class="label">Email Address: </span>
+                    <p>{{ profile.email }}</p>
+                    <br>
+                    <span class="label">Total Classrooms: </span>
+                    <p>{{ classrooms.count }}</p>
+                    <br>
+                    <span class="label">Total Assignments: </span>
+                    <p>{{ assignments.count }}</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Assignments</span>
+                {% for assignment in assignments %}
+                    <p class="assignmentDesc">{{ assignment.description }}</p>
+                    <p><span class="label">Due Date: </span> {{ assignment.due_date }}</p>
+                    <br>
+                {%  endfor %}
+            </div>
+            <div class="card-action">
+                <a href="{% url 'assignments_index' %}">View All Assignments</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Classes</span>
+                {% for classroom in classrooms %}
+                    <p class="assignmentDesc"><span class="label">{{ classroom.course_subject }} {{ classroom.course_number }}: </span> {{ classroom.course_name }}</p>
+                    <br>
+                {%  endfor %}
+            </div>
+            <div class="card-action">
+                <a href="{% url 'classrooms_index' %}">View All Classrooms</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

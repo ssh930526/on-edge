@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 id="stu_detail">Student Details</h1>
+<h1 class="nav-header">Student Details</h1>
 <style>
     body {
-      background-image: url('https://i.pinimg.com/originals/ab/6b/8a/ab6b8abe29997cd674cd4684067fb06f.jpg');
+        background-image: url('https://cdn.wallpapersafari.com/78/70/XIbUE1.jpg');
       background-repeat: no-repeat;
       background-size: 100% 100%; 
       
@@ -16,8 +16,8 @@
         <p>Age: {{ student.age }}</p>
     </div>
     <div class="card-action">
-        <a class="btn-floating pulse lime lighten-4" href="{% url 'students_update' student.id %}"><i class="material-icons"> edit</i></a>
-        <a class="btn-floating pulse lime lighten-4" href="{% url 'students_delete' student.id %}"><i class="material-icons"> delete</i></a>
+        <a class="btn-floating icons" href="{% url 'students_update' student.id %}"><i class="material-icons"> edit</i></a>
+        <a class="btn-floating icons" href="{% url 'students_delete' student.id %}"><i class="material-icons"> delete</i></a>
     </div>
     {% for photo in student.photo_set.all %}
         <img src="{{ photo.url }}" alt="{{ student.first_name }} {{ student.last_name }}" class="responsive-img card-panel">
@@ -29,7 +29,7 @@
         <input type="file" name="photo-file">
         <br>
         <br>
-        <input type="submit" class="btn" value="Upload Photo">
+        <input type="submit" class="btn icons" value="Upload Photo">
     </form>
 </div>
 

@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 id="assigment">Current Assignments</h1>
-
-
+<h1 class="nav-header">Current Assignments</h1>
 
 {% for assignment in assignments %}
 <a href="{% url 'assignments_detail' assignment.id %}">
@@ -19,7 +17,7 @@
 {% endfor %}
 
 {% if profile.is_teacher %}
-    <a class="btn-floating pulse lime lighten-4" id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
+    <a class="btn-floating icons" id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
 {% endif %}
 
 <style>

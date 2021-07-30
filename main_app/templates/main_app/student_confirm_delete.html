@@ -2,16 +2,22 @@
 
 {% block content%}
 
-<h1 id="delete">Delete Student</h1>
+<h1 class="nav-header">Delete Student</h1>
 
-<img id="img1"src="https://i.pinimg.com/736x/72/6b/1c/726b1c5baeda1003f86847cc28d73fd0.jpg">
+<style>
+    body {
+        background-image: url('https://cdn.wallpapersafari.com/78/70/XIbUE1.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;   
+    }
+</style>
 
-<h4>Are you sure you want to delete <span class="teal-text ndigo lighten-2">{{ object.first_name }} {{ object.last_name }}</span>?</h4>
+<h4>Are you sure you want to delete {{ object.first_name }} {{ object.last_name }}?</h4>
 
 <form action="" method="POST">
     {% csrf_token %}
-    <input class="btn-floating pulse lime lighten-4" type="submit" value="✔︎">
-    <input class="btn-floating pulse lime lighten-4" type="submit" value="✘" href="">
+    <input class="btn-floating icons" type="submit" value="✔︎">
+    <input class="btn-floating icons" type="submit" value="✘" href="">
 </form>
 
 {% endblock %}

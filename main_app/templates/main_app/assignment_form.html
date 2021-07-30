@@ -3,13 +3,13 @@
 {% block content %}
 
 {% if object %}
-<h1 id="edit">Edit Assignment {{ object.id }}</h1>
+<h1 class="nav-header">Edit Assignment {{ object.id }}</h1>
 {% else %}
-<h1 id="edit">Add New Assignment</h1>
+<h1 class="nav-header">Add New Assignment</h1>
 {% endif %}
 <style>
     body {
-      background-image: url('https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-learning-clip-decorative-border-image_1452048.jpg');
+      background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/34/41/vj3iml.jpg');
       background-repeat: no-repeat;
       background-size: 100% 100%; 
     }
@@ -19,11 +19,9 @@
     <table>
         {{ form.as_table }}
     </table>
-    {% if object %}
-    <input type="submit" value='✔︎' class="btn-floating pulse lime lighten-4">
-    {% else %}
-    <input type="submit" value='✚' class="btn-floating pulse lime lighten-4">
-    {% endif %}
+    <br>
+    <input type="submit" value='✔︎' class="btn-floating icons">
+  
 </form>
 
 <script>

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1 id="lists">Students List</h1>
+<h1 class="nav-header">Students List</h1>
 
 <style>
     body {
-      background-image: url('https://i.pinimg.com/originals/ab/6b/8a/ab6b8abe29997cd674cd4684067fb06f.jpg');
+      background-image: url('https://cdn.wallpapersafari.com/78/70/XIbUE1.jpg');
       background-repeat: no-repeat;
       background-size: 100% 100%; 
     }
@@ -21,6 +21,6 @@
     </a>
 </div>
 {% endfor %}
-<a id="button" class="btn-floating pulse lime lighten-4" href="{% url 'students_create'%}"><i class="material-icons"> add</i></a>
+<a class="btn-floating icons" href="{% url 'students_create'%}"><i class="material-icons"> add</i></a>
 
 {% endblock %}

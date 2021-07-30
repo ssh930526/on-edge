@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 id="list">Classroom List</h1>
+<h1 class="nav-header">Classroom List</h1>
 <style>
     #list{
         color: rgb(186, 209, 132);
@@ -10,7 +10,7 @@
         text-align: center;
     }
     body {
-      background-image: url('https://pic.52112.com/2021/01/28/22/28225816_eb2f9123b9_small.jpg');
+      background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
       background-repeat: no-repeat;
       background-size: 100% 100%;
     }
@@ -27,7 +27,7 @@
 </div>
 {% endfor %}
 {% if profile.is_teacher %}
-   <a class="btn-floating pulse lime lighten-4" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
+   <a class="btn-floating icons" href="{% url 'classrooms_create'%}"><i class="material-icons"> add</i></a>
 {% endif %}
 
 {% endblock %}

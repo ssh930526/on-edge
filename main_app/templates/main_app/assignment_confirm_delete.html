@@ -2,21 +2,21 @@
 
 {% block content %}
 
-<h1 id="delete_assignment">Delete Assignment {{ object.id }}</h1>
+<h1 class="nav-header">Delete Assignment {{ object.id }}</h1>
 
 <h4 id="message">Are you sure you want to delete Assignment {{ object.id }}?</h4>
 <style>
     body {
-      background-image: url('https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-learning-clip-decorative-border-image_1452048.jpg');
+      background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/34/41/vj3iml.jpg');
       background-repeat: no-repeat;
       background-size: 100% 100%; 
     }
 </style>
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="🗑" class="btn-floating pulse lime lighten-4">
-    <a href="{% url 'assignments_detail' object.id %}">
-        <input type="submit" value="✘" class="btn-floating pulse lime lighten-4">
+    <input type="submit" value="✔" class="btn-floating icons">
+    <a href="{% url 'assignments_detail' assignment.id %}">
+        <input type="submit" value="✘" class="btn-floating icons">
     </a>
 
 </form>

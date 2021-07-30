@@ -3,13 +3,13 @@
 {% block content %}
 
 {% if object %}
-    <h1 id="classro">Edit <span class="teal-text">{{ object.course_subject }}{{ object.course_number }}</span></h1>
+    <h1 class="nav-header">Edit {{ object.course_subject }}{{ object.course_number }}</h1>
 {% else %}
-    <h1 id="classro">Add A New Classroom</h1>
+    <h1 class="nav-header">Add A New Classroom</h1>
 {% endif %}
 <style>
     body {
-      background-image: url('https://i.pinimg.com/originals/cd/64/8c/cd648c18c07544ef1f3c4299e5faee56.jpg');
+        background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
       background-repeat: no-repeat;
       background-size: 100% 100%; 
     }
@@ -19,7 +19,8 @@
     <table>
         {{ form.as_table }}
     </table>
-    <input class="btn-floating pulse lime lighten-4" type="submit" value="✔︎">
+    <br>
+    <input class="btn-floating icons" type="submit" value="✔">
 </form>
 
 {% endblock %}
