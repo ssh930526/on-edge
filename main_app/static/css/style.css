@@ -263,6 +263,7 @@ footer {
 #authContainer .card {
     margin: 20px;
     width: 300px;
+    border-radius: 10px;
 }
 
 #aboutText {
@@ -300,3 +301,35 @@ footer {
     color: rgb(66, 14, 114);
     font-size: 1.5rem;
 }
+
+#loginContainer, #signupContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginform, #signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+
+}
+
+#loginform *, #signupForm * {
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.loginCard, .signupCard {
+    padding: 60px;
+    border-radius: 10px;
+    background-color: rgba(252, 248, 248, 0.76);
+}
+
+#loginBtn, #signupBtn{
+    margin-top: 1rem;
+    background-color: rgb(66, 14, 114);
+}
+
+

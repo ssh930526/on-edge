@@ -3,18 +3,29 @@
 
 {% block content %}
 
+<h1 class="nav-header">Login to OnEdge™</h1>
 
-   
-<h1 class="nav-header">Login</h1>
+<div id="loginContainer">
+    <div class="card loginCard">
+        <div class="card-content">
+            <form action="{% url 'login' %}"  method="POST">
+                <legend id="loginform">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input id="loginBtn" type="submit" value="Login" class="btn">
+                    
+                    <input type="hidden" name="next" value="{{ next }}">   
+                </legend>
+            </form>
+        </div>
+    </div>
+</div>
 
-<form action="{% url 'login' %}"  method="POST">
-    <legend>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login" class="btn grey lighten-1 right">
-        
-        <input type="hidden" name="next" value="{{ next }}">   
-    </legend>
-</form>
-
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+    }
+</style>
 {% endblock %}
