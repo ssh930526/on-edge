@@ -227,7 +227,7 @@ footer {
 }
 
 .homepageText {
-    margin-top: 100px;
+    margin-top: 50px;
     font-size: 1.5rem;
     text-align: center;
 }
@@ -276,9 +276,9 @@ footer {
 }
 
 .leaderImg {
-    height: 9rem;
-    border-radius: 50%;
-    padding-right: 20px;
+    /* height: 11rem; */
+    /* border-radius: 50%; */
+    /* padding-right: 20px; */
 }
 
 .leaderTitle {
@@ -290,12 +290,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid rgb(66, 14, 114);
-    border-radius: 10px;
-    padding: 30px;
+    padding: 15px;
     margin: 0 20px 0 20px;
-    width: 32rem;
-    background-color: rgb(240, 240, 240);
+    width: 35rem;
+    background-color: rgb(240, 240, 240); 
 }
 
 .leaderName {
