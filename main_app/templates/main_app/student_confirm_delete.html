@@ -12,12 +12,21 @@
     }
 </style>
 
-<h4>Are you sure you want to delete {{ object.first_name }} {{ object.last_name }}?</h4>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <input class="btn-floating icons" type="submit" value="✔︎">
-    <input class="btn-floating icons" type="submit" value="✘" href="">
-</form>
+
+<div class="deleteContainer">
+    <div class="card">
+        <div class="card-content">
+            <h4 id="message">Are you sure you want to delete student:  {{ object.first_name }} {{ object.last_name }}?</h4>
+            <hr size="8" width="100%" color="rgb(66, 14, 114)">
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input class="btn-floating icons" type="submit" value="✔︎">
+                <input class="btn-floating icons" type="submit" value="✘" href="">
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -189,20 +189,22 @@ footer {
     color: rgb(105, 119, 71);
     /* font-family: 'Style Script', cursive; */
     display: flex;
-    position: relative;
+    /* position: relative; */
     margin-bottom: 50px;
     left: 20px;
     top: 50px;
 }
-#class_text{
+
+#classCreateForm{
     display:flex;
     flex-direction: column;
-    position: relative;
-    /* font-family: 'Roboto Mono', monospace; */
+    align-items: center;
+    /* justify-content: center; */
+    /* position: relative; */
     color:slategray;
     font-size: 20px;
     width: 50rem;
-    left: 43px;
+    /* left: 43px; */
 }
 
 /* classroom detail */
@@ -263,7 +265,6 @@ footer {
 #authContainer .card {
     margin: 20px;
     width: 300px;
-    border-radius: 10px;
 }
 
 #aboutText {
@@ -302,7 +303,7 @@ footer {
     font-size: 1.5rem;
 }
 
-#loginContainer, #signupContainer {
+#loginContainer, #signupContainer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -332,4 +333,20 @@ footer {
     background-color: rgb(66, 14, 114);
 }
 
+.card {
+    border-radius: 10px;
+}
 
+.classroomContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.assignmentButton {
+    margin-left: 15px;
+}
+
+.onedgenav {
+    background-color: rgb(66, 14, 114);
+}
