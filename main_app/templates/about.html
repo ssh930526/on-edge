@@ -3,71 +3,73 @@
 {% block content %}
 
 
-    <h1 id="about">About the OnEdge</h1>
-        <style>
-            #about {
-                position: relative;
-                color:rgb(66, 14, 114);
-                font-family: 'Advent Pro', sans-serif;
-                z-index: 999; 
-            }
-        </style>
-        <img id="img4" src="https://t4.ftcdn.net/jpg/03/49/04/11/360_F_349041172_7p4d3KBfqpM2fg51vuPq4jhLkkwnnrFk.jpg">
-            <style>
-                #img4 {
-                    position: absolute;
-                    top: 5px;
-                    right:350px;
-                    border-radius: 50%;     
-                }
-            </style>
-    
-    <p id="aboutText">
-        <style>
-            
-            #aboutText{
-                position: relative;
-                color:slategray;
-                font-size: 20px;
-                font-family: 'Advent Pro', sans-serif;
-                border:15px;
-                width: 400px;
-                bottom: 10px;
-            }
-        </style>
-        An online learning tool that provides a platform for teachers and students to communicate effectively with each other 
-    </p>
-<br>
-<img id="img2" src="https://img.freepik.com/free-vector/student-guy-studying-internet-watching-online-lecture-computer-talking-math-tutor-through-video-call-cartoon-illustration_74855-14524.jpg?size=626&ext=jpg&ga=GA1.2.1525735981.1624579200">
+<div id="aboutContainer">
+    <h1 class="nav-header">About OnEdge™</h1>
+
+    <img id="img2" src="https://img.freepik.com/free-vector/student-guy-studying-internet-watching-online-lecture-computer-talking-math-tutor-through-video-call-cartoon-illustration_74855-14524.jpg?size=626&ext=jpg&ga=GA1.2.1525735981.1624579200">
     <style>
         #img2{
             border-radius: 50px;
             padding-right:60px;
+            height: 15rem;
         }
 
     </style>
-    <p id="contact">
-        <style>
-            #contact{ 
-                position: relative;
-                color:rgb(44, 47, 51);
-                font-size: 15px;
-                font-family: 'Advent Pro', sans-serif;
-                border:25px;
-                /* width: 200px; */
-                padding-top: 50px;
-        
-            }
-        </style>
-        Contact:
-        <br>
-        Swaroop Uprety: upretyswaroop@gmail.com
-        <br>
-        Joseph Choi: jchoi192@gmail.com
-        <br>
-        Sihui Shen: sihui.shen@yahoo.com
+    <h5>Our Mission:</h5>
+    <p id="aboutText">
+        OnEdge™ is an online learning tool that provides a platform for teachers and students to communicate effectively
+        with each other
     </p>
-    
+    <br>
 
-    
+    <h5>Our Leaders:</h5>
+    <div id="contact">
+        <div class="leader">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img class="leaderImg" src="https://i.imgur.com/brkbEfJ.png">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4>Sihui Shen</h4>
+                        <span class="label">Chief Executive Officer</span>
+                        <br>
+                        <p>sihui.shen@yahoo.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img class="leaderImg" src="https://i.imgur.com/Y3BKAOr.png">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4>Joseph Choi</h4>
+                        <span class="label">Chief Technology Officer</span>
+                        <br>
+                        <p>jchoi192@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img class="leaderImg" src="https://i.imgur.com/17CfYYk.png">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4>Swaroop Uprety</h4>
+                        <span class="label">Chief Financial Officer</span>
+                        <br>
+                        <p>upretyswaroop@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
 {% endblock %}
