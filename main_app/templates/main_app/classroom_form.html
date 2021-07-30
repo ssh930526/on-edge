@@ -10,17 +10,24 @@
 <style>
     body {
         background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
-      background-repeat: no-repeat;
-      background-size: 100% 100%; 
+        background-repeat: no-repeat;
+        background-size: 100% 100%; 
     }
 </style>
-<form id="class_text" action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <br>
-    <input class="btn-floating icons" type="submit" value="✔">
-</form>
+
+<div id="classCreateContainer">
+    <div class="card">
+        <div class="card-content">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <br>
+                <input type="submit" value='✔︎' class="btn-floating icons">
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

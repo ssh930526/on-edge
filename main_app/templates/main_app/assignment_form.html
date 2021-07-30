@@ -14,16 +14,20 @@
       background-size: 100% 100%; 
     }
 </style>
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <br>
-    <input type="submit" value='✔︎' class="btn-floating icons">
-  
-</form>
-
+<div id="assCreateContainer">
+    <div class="card">
+        <div class="card-content">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <br>
+                <input type="submit" value='✔︎' class="btn-floating icons">
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     const dueDateEl = document.querySelector('#id_due_date');
     M.Datepicker.init(dueDateEl, {

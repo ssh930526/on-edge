@@ -17,7 +17,7 @@
 {% endfor %}
 
 {% if profile.is_teacher %}
-    <a class="btn-floating icons" id="add" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
+    <a class="btn-floating icons assignmentButton" href="{% url 'assignments_create' %}"><i class="material-icons"> add</i></a>
 {% endif %}
 
 <style>
@@ -26,7 +26,7 @@
       background-repeat: no-repeat;
       background-size: 100% 100%; 
     }
-    </style>
+</style>
 
 
 {% endblock %}
