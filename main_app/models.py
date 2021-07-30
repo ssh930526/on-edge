@@ -45,4 +45,9 @@ class Profile(models.Model):
   last_name = models.CharField(max_length=100, default=None)
   email = models.EmailField(default=None)
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"Photo for student_id: {self.student_id} @{self.url}"

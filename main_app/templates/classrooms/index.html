@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 id="list">Classroom List</h1>
+<h1 class="nav-header">Classroom List</h1>
 <style>
     #list{
         color: rgb(186, 209, 132);
@@ -10,22 +10,24 @@
         text-align: center;
     }
     body {
-      background-image: url('https://i.pinimg.com/originals/1b/9b/7b/1b9b7b85c5fec4715dab8600695e6450.png');
+      background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
     }
 </style>
 
 {% for classroom in classrooms %}
-<div class="card">
+<div id="room" class="card">
     <a href="{% url 'classrooms_detail' classroom.id %}">
-        <div class="card-content">
+        <div id="classroom" class="card-content">
             <span class="card-title">{{ classroom.course_subject }} {{ classroom.course_number }}</span>
             <p>Course Name: {{ classroom.course_name }}</p>
         </div>
     </a>
 </div>
 {% endfor %}
-
 {% if profile.is_teacher %}
-    <a class="btn-floating pulse" href="{% url 'classrooms_create'%}"> <i class="material-icons"> add</i></a>
+   <a class="btn-floating icons" href="{% url 'classrooms_create'%}"><i class="material-icons"> add</i></a>
 {% endif %}
+
 {% endblock %}

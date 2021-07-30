@@ -3,21 +3,25 @@
 {% block content %}
 
 {% if object %}
-<h1>Edit Assignment {{ object.id }}</h1>
+<h1 class="nav-header">Edit Assignment {{ object.id }}</h1>
 {% else %}
-<h1>Add New Assignment</h1>
+<h1 class="nav-header">Add New Assignment</h1>
 {% endif %}
-
+<style>
+    body {
+      background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/34/41/vj3iml.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+    }
+</style>
 <form action="" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-    {% if object %}
-    <input type="submit" value='Confirm Edits' class="btn">
-    {% else %}
-    <input type="submit" value='Create Assignment' class="btn">
-    {% endif %}
+    <br>
+    <input type="submit" value='✔︎' class="btn-floating icons">
+  
 </form>
 
 <script>

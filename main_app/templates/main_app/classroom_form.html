@@ -3,17 +3,24 @@
 {% block content %}
 
 {% if object %}
-    <h1>Edit <span class="teal-text">{{ object.course_subject }}{{ object.course_number }}</span></h1>
+    <h1 class="nav-header">Edit {{ object.course_subject }}{{ object.course_number }}</h1>
 {% else %}
-    <h1>Add A New Classroom</h1>
+    <h1 class="nav-header">Add A New Classroom</h1>
 {% endif %}
-
-<form action="" method="POST">
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80');
+      background-repeat: no-repeat;
+      background-size: 100% 100%; 
+    }
+</style>
+<form id="class_text" action="" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-    <input class="btn" type="Submit" value="Submit">
+    <br>
+    <input class="btn-floating icons" type="submit" value="✔">
 </form>
 
 {% endblock %}
